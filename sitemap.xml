@@ -2,332 +2,182 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zzhzju.github.io/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/friend_link/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%E8%AF%BE/DM/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%E8%AF%BE/OOP/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%E8%AF%BE/PTMS/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%E8%AF%BE/fds/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E5%BF%85%E4%BF%AE%E8%AF%BE/CSP/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E6%A8%A1%E5%9D%97%E8%AF%BE/ads/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%93%E4%B8%9A%E9%80%89%E4%BF%AE%E8%AF%BE/NA/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AF%BE%E7%A8%8B/%E4%BC%9A%E8%AE%A1%E5%AD%A6/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AF%BE%E7%A8%8B/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E4%B8%AA%E6%80%A7%E5%8C%96%E8%AF%BE%E7%A8%8B/%E9%87%8F%E5%AD%90%E7%AE%97%E6%B3%95/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/CMake/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Latex/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/docker/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/git/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/gnu%20make/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/vim/</loc>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E7%9F%AD%E5%AD%A6%E6%9C%9F%E8%AF%BE%E7%A8%8B/CTF101/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E9%80%9A%E8%AF%86%E5%BF%85%E4%BF%AE%E8%AF%BE/C%20programming/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E9%80%9A%E8%AF%86%E5%BF%85%E4%BF%AE%E8%AF%BE/Caculus/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E9%80%9A%E8%AF%86%E5%BF%85%E4%BF%AE%E8%AF%BE/Linear%20Algebra/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/ZJU%20%E8%AF%BE%E7%A8%8B/%E9%80%9A%E8%AF%86%E5%BF%85%E4%BF%AE%E8%AF%BE/Physics/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/CMake/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Latex/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/docker/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/git/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/gnu%20make/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/vim/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Algorithm/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/Crypto/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/DS/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/NumAn/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E6%9D%82%E8%B0%88/CSA_Interview/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E6%9D%82%E8%B0%88/Computer/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E6%9D%82%E8%B0%88/Latex/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch0/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch1/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch2/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch3/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch4/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Deep%20Learning/ch5/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/LinearAlgebra/Geometric/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/LinearAlgebra/MatDec/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/LinearAlgebra/a_index/</loc>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/LinearAlgebra/main/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Machine%20Learning/ch0/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Machine%20Learning/ch1/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Machine%20Learning/ch2/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Machine%20Learning/ch3/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Machine%20Learning/ch4/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/PaperReading/BinaryAI/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/PaperReading/CONCORD/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/PaperReading/TREX/</loc>
+         <lastmod>2024-10-26</lastmod>
+    </url>
+    <url>
+         <loc>https://zzhzju.github.io/%E7%A7%91%E7%A0%94/Possiblity%20Theory/course/</loc>
+         <lastmod>2024-10-26</lastmod>
     </url>
     <url>
          <loc>https://zzhzju.github.io/%E7%B4%A2%E5%BC%95/archive/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Class/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Container/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Copy/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Exception/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Function/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Inheritance/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Memory%20Control/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Miscellaneous/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Overload/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Polymorphism/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Random%20Number/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Regex%20Express/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C%2B%2B/Template/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E5%86%85%E7%BD%AE%E5%BA%93/random/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E5%86%85%E7%BD%AE%E5%BA%93/re/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E5%86%B7%E7%9F%A5%E8%AF%86/import/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E5%86%B7%E7%9F%A5%E8%AF%86/pip/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/MatPlotLib/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/NumPy/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/bs4/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/pandas/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/requests/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zzhzju.github.io/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/X86%E6%B1%87%E7%BC%96/x86note/</loc>
-         <lastmod>2024-09-04</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2024-10-26</lastmod>
     </url>
 </urlset>
