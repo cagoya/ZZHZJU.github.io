@@ -137,7 +137,7 @@ function clickEffect() {
 
 
 
-//雪花
+//背景雪花特效
 const fps = 30;
 const mspf = Math.floor(1000 / fps) ; 
 
@@ -284,4 +284,4 @@ window.addEventListener('keydown', e => {
 });
 
 requestFrame();
-//雪花
+//背景雪花特效
