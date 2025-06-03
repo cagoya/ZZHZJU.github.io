@@ -1,6 +1,6 @@
 site_name: Nana's Notebook
 site_url: https://zzhzju.github.io/
-site_dir: "./blog_front"
+site_dir: "../web"
 site_author: Nana
 site_description: >- # 项目描述
   Welcome to Nana's Notebook~
