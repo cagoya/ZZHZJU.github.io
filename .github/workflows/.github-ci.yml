@@ -3,11 +3,11 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main # 当推送到 main 分支时触发此工作流
+      - main
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # 使用最新版的 Ubuntu 运行作业
+    runs-on: ubuntu-latest
 
     steps:
       - name: 检出代码
@@ -22,7 +22,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }} # 如果你有 requirements.txt 文件，可以用它来生成缓存键
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
