@@ -3,45 +3,44 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main # 当推送到 main 分支时触发此工作流
 
 jobs:
-  build_and_deploy:
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest # 使用最新版的 Ubuntu 运行作业
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: 检出代码
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x' # 你可以指定具体的 Python 版本，例如 '3.9'
 
-    - name: Configure pip cache directory
-      id: pip-cache-dir
-      run: |
-        echo "PIP_CACHE_DIR=$(pip cache dir)" >> $GITHUB_ENV
-        echo "Pip cache directory: $PIP_CACHE_DIR"
+      - name: 配置 pip 缓存
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }} # 如果你有 requirements.txt 文件，可以用它来生成缓存键
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-    - name: Cache pip dependencies
-      uses: actions/cache@v4
-      with:
-        path: ${{ env.PIP_CACHE_DIR }}
-        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }} 
-        restore-keys: |
-          ${{ runner.os }}-pip- # 当精确匹配失败时，尝试恢复最近的缓存
+      - name: 安装 MkDocs 及其插件
+        run: |
+          pip install --disable-pip-version-check mkdocs
+          pip install --disable-pip-version-check mkdocs-material
+          pip install --disable-pip-version-check mkdocs-statistics-plugin
+          pip install --disable-pip-version-check mkdocs-git-revision-date-localized-plugin
+        # 注意：在 GitHub Actions 中，通常不需要手动配置国内镜像源，因为其默认的网络访问通常较好。
+        # 如果你遇到安装速度慢的问题，可以考虑在 pip install 命令中添加 -i 参数。
 
-    - name: Install MkDocs and plugins from Tsinghua mirror
-      run: |
-        # 使用清华大学 PyPI 镜像安装所有依赖
-        pip install --disable-pip-version-check -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+      - name: 构建 MkDocs 站点
+        run: mkdocs build
 
-    - name: Build MkDocs
-      run: mkdocs build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
+      - name: 部署到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main' # 只有当当前分支是 main 时才部署
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub 提供的默认 token，用于部署
+          publish_dir: ./site # MkDocs 默认的构建输出目录是 site
