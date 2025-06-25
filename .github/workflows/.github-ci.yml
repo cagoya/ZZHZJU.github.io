@@ -1,0 +1,47 @@
+name: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Configure pip cache directory
+      id: pip-cache-dir
+      run: |
+        echo "PIP_CACHE_DIR=$(pip cache dir)" >> $GITHUB_ENV
+        echo "Pip cache directory: $PIP_CACHE_DIR"
+
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ${{ env.PIP_CACHE_DIR }}
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }} 
+        restore-keys: |
+          ${{ runner.os }}-pip- # 当精确匹配失败时，尝试恢复最近的缓存
+
+    - name: Install MkDocs and plugins from Tsinghua mirror
+      run: |
+        # 使用清华大学 PyPI 镜像安装所有依赖
+        pip install --disable-pip-version-check -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+
+    - name: Build MkDocs
+      run: mkdocs build
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
