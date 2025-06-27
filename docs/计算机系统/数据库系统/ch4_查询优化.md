@@ -55,5 +55,3 @@
   * 如果$R \cap S $是$R $的主键，那么大小应该$\leq n_s $
   * 如果$R \cap S $是$S $的外键指向$R $，那么大小应该$n_s $
   * 如果$R \cap S = A $不是主键，则取$\min(\frac{n_r*n_s}{V(A, r)},\frac{n_r*n_s}{V(A, s)}) $ 
-
-### 其他操作

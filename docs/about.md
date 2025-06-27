@@ -185,14 +185,14 @@
     <div class="timeline">
         <div class="timeline-item left">
             <div class="timeline-content">
-                <h3>德阳中学</h3>
-                <p>平凡的六年</p>
+                <h3>四川省德阳中学</h3>
+                <p>初高中六年</p>
                 <p class="date">2017 - 2023</p>
             </div>
         </div>
         <div class="timeline-item right">
             <div class="timeline-content">
-                <h3>ZJU</h3>
+                <h3>浙江大学</h3>
                 <p>软件工程学士(ing)</p>
                 <p class="date">2023 - 2027</p>
             </div>
@@ -200,7 +200,7 @@
         <div class="timeline-item left">
             <div class="timeline-content">
                 <h3>浙江大学（待定）</h3>
-                <p>？？？硕士研究生</p>
+                <p>？？？</p>
                 <p class="date">??? - ???</p>
             </div>
         </div>
