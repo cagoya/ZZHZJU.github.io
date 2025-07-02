@@ -1,113 +1,65 @@
----
-statistics: True
----
 # 主页
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+## Who Am I
 
-<!-- 显示总访问量和访客数 -->
-浏览量：<span id="busuanzi_value_site_pv"></span> |
-访客数：<span id="busuanzi_value_site_uv"></span>
+浙江大学软件工程专业本科在读，目前在试着做[扩散模型](https://cagoya.github.io/ZZHZJU.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/DifussionSystem/)相关内容，感觉剩下的也没什么好说的（
 
-<center><font  color= #757575 size=6 class="ml3">“凡心所向，素履以往”</font></center>
-<script src="https://cdn.statically.io/libs/animejs/2.0.2/anime.min.js"></script>
+## TODO
 
-<div class="grid cards" markdown>
+- [ ] ZJU课程：更新大二下课程经验总结
+- [ ] 计算机网络（暑假）
+- [ ] 操作系统（暑假）
+- [ ] 扩散模型论文阅读(持续更新)
 
-- :material-notebook-edit-outline:{ .lg .middle } __导航栏__
+## 好用的网站
 
-    ---
+- [CS自学指南](https://csdiy.wiki/)：很全的 CS 优质课程推荐
+- [ZJU-CS-ALL-IN-ONE](https://isshikihugh.github.io/zju-cs-asio/)： ZJU CS 的优秀博客汇总
+- [cppperference](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)： C++ 语法的详细参考
 
-    ![image](https://s1.imagehub.cc/images/2025/03/02/5ca6e706edd485a936961c5e8c1b6bba.webp){ class="responsive-image" align=right width="340" height="280" style="border-radius: 25px;" }
+## 友链
 
-  - 𝕙𝕒𝕧𝕖 𝕒 𝕘𝕠𝕠𝕕 𝕥𝕚𝕞𝕖 !
-  - <del>搜索关键词查询文章</del>
-  - 如遇到无法显示图片或者$Latex$无法解析的情况，请刷新页面
-  - 本站共有 {{ pages }} 个页面，{{ words }} 个字，{{ codes }} 行代码
-
+<div class="post-body">
+    <div id="links">
+        <div class="links-content">
+            <div class="link-navigation">
+                <div class="card">
+                    <img class="ava" src="https://mem.ac/static/a6cef06ac3267a5705afaaf9092d0c47/e8b76/avatar-8x.png" />
+                    <div class="card-header">
+                        <div>
+                            <a href="https://mem.ac/" target="_blank">mem的小站</a>
+                        </div>
+                        <div class="info">在海月的虚空中，纵身飞过秋凉的时鸟。</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="ava" src="https://jokerxuxu.github.io/medias/logo.png"/>
+                    <div class="card-header">
+                        <div>
+                            <a href="https://jokerxuxu.github.io/" target="_blank">虚的小屋</a>
+                        </div>
+                        <div class="info">一帆一江一渔舟，一蓑烟雨一钓翁。一俯一仰一场笑，一江明月一江秋。</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="ava" src="https://memoryoffish.github.io/images/avatar.jpg"/>
+                    <div class="card-header">
+                        <div>
+                            <a href="https://memoryoffish.github.io/" target="_blank">memory of fish</a>
+                        </div>
+                        <div class="info">一只躺平的小丑鱼</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="ava" src="https://s1.imagehub.cc/images/2025/01/21/9641b040152d0a3ac28b450329a725f4.jpg"/>
+                    <div class="card-header">
+                        <div>
+                            <a href="https://www.aboatwithflow.top/" target="_blank">memory of fish</a>
+                        </div>
+                        <div class="info">你是我的我是你的谁！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<style>
-    @media only screen and (max-width: 768px) {
-        .responsive-image {
-            display: none;
-        }
-    }
-</style>
-
-<style>
-#rcorners3 {
-  border-radius: 25px;
-  border: 2px solid #518FC1;
-  padding: 20px;
-  width: 100%;
-  height: 30%;
-  font-size: 18px;
-  text-align: center;
-}
-</style>
-<body>
-<font color="#B9B9B9">
-  <p style="text-align: center; ">
-      <span>本站已经运行</span>
-      <span id='box1'></span>
-</p>
-  <div id="box1"></div>
-  <script>
-    function timingTime(){
-      let start = '2024-2-26 00:00:00'
-      let startTime = new Date(start).getTime()
-      let currentTime = new Date().getTime()
-      let difference = currentTime - startTime
-      let m =  Math.floor(difference / (1000))
-      let mm = m % 60  // 秒
-      let f = Math.floor(m / 60)
-      let ff = f % 60 // 分钟
-      let s = Math.floor(f/ 60) // 小时
-      let ss = s % 24
-      let day = Math.floor(s  / 24 ) // 天数
-      return day + "天" + ss + "时" + ff + "分" + mm +'秒'
-    }
-    setInterval(()=>{
-document.getElementById('box1').innerHTML = timingTime()
-    },1000)
-  </script>
-  </font>
-</body>
-
-***  
-
-<div class="grid cards" markdown>
-
-- :octicons-bookmark-16:{ .lg .middle } __最近更新__
-
-    ---
-
-  - [ ] ZJU课程：更新大二下课程经验总结
-  - [ ] 扩散模型论文阅读(持续更新)
-
-- :simple-materialformkdocs:{ .lg .middle } __个人学习计划__
-
-    ---
-
-  - [ ] 计算机网络
-  - [ ] 操作系统
-  - [ ] 深度学习
-
-- :material-format-font:{ .lg .middle } __好用的网站__
-
-    ---
-
-  - [CS自学指南](https://csdiy.wiki/)
-  - [ZJU-CS-ALL-IN-ONE](https://isshikihugh.github.io/zju-cs-asio/)
-  - [cppperference](https://zh.cppreference.com/w/%E9%A6%96%E9%A1%B5)
-
-- :simple-aboutdotme:{ .lg .middle } __关于__
-
-    ---
-
-  - [关于我]()
-  - 关于家乡(待写)
-
-</div>
-
-</head>
