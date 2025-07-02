@@ -3058,7 +3058,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3157,7 +3157,7 @@
 <p class="admonition-title">Note</p>
 <p>Linux下直接安装gnumake，运行命令是<code>make</code>，Windows下可以安装gcc（配套有mingw32-make）</p>
 </div>
-<p>对于大型项目的编译，有成百上千个工程文件，根本不可能纯手工去指定如何编译。又比如，你修改了一个文件的某一行代码，难道你必须要把整个项目都又编译一次吗？这种时候Makefile就显得非常有用,makefile可以大写，也可以小写，一般Makefile首字母使用大写。
+<p>对于大型项目的编译，有成百上千个工程文件，根本不可能纯手工去指定如何编译。又比如，你修改了一个文件的某一行代码，难道你必须要把整个项目都又编译一次吗？这种时候Makefile就显得非常有用,makefile可以大写，也可以小写，一般Makefile首字母使用大写。</p>
 <div class="language-makefile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># 指定编译器</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">CC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>gcc
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -3193,10 +3193,10 @@
 </span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
 </span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c"># 伪目标，不会与文件名冲突</span>
 </span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">clean</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h2 id="cmake">CMake</h2>
 <p>你是不是觉得makefile有些复杂，没有关系，我们还有CMake，它比makefile更适合跨平台，<del>你以后再也不用编写复杂的makefile了，可以编写更复杂的CMakeLists</del>。CMake在Linux下也是直接下载就可以了，Windows下去官网下载并配好环境变量，需要注意Windows下如果你没有使用VS，比如你用了VS Code，那么在输入CMake命令时需要指定编译器，假设你用的gcc，则输入<code>CMake -G "mingw32makefile" -b build -s .</code></p>
-<p>一个简单的示例，CMake能帮你做很多事，所以它会生成一堆中间文件，所以一般建议单独新建一个build文件夹来存放构建中间文件
+<p>一个简单的示例，CMake能帮你做很多事，所以它会生成一堆中间文件，所以一般建议单独新建一个build文件夹来存放构建中间文件</p>
 <div class="language-cmake highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.5</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">11</span><span class="p">)</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -3213,7 +3213,7 @@
 </span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nb">set_target_properties</span><span class="p">(</span><span class="s">main</span><span class="w"> </span><span class="s">PROPERTIES</span>
 </span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="s">RUNTIME_OUTPUT_DIRECTORY</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_SOURCE_DIR</span><span class="o">}</span><span class="s">/src</span>
 </span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">)</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h2 id="vcpkg">vcpkg</h2>
 <p>C++不像后来的Python和Java有那种很智能的包管理器，但是终归还是有替代方案的，比如vcpkg，这个可以和 VS 适配，在配置一些比如OpenGL,OpenCV的库的时候很好用，与VS建立连接之后甚至可以自动导入环境，在实际使用时引用头文件就可以了</p>
 
@@ -3238,7 +3238,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3248,7 +3248,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

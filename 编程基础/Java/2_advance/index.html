@@ -3133,7 +3133,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3307,14 +3307,14 @@
 <p>本节是Java重要特性的合集，包括反射、注解、包等知识</p>
 </div>
 <h2 id="_1">包</h2>
-<p>相当于C++的命名空间，把功能相似或相关的类或接口组织在一个包中，方便类的查找和使用，不同包中的类名字可以相同。比如：
+<p>相当于C++的命名空间，把功能相似或相关的类或接口组织在一个包中，方便类的查找和使用，不同包中的类名字可以相同。比如：</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">//package必须写在最前面，除了注释</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">package</span><span class="w"> </span><span class="nn">net.java.util</span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Something</span><span class="p">{</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p">...</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
 </span></code></pre></div>
-那么它的路径就应该是<code>net/java/Something.java</code></p>
+<p>那么它的路径就应该是<code>net/java/Something.java</code></p>
 <p>但是源文件是有声明规则的，当在一个源文件中定义多个类，并且还有<code>import</code>和<code>package</code>语句时，需要特别注意这些规则：</p>
 <ul>
 <li>一个源文件只能有一个<code>public</code>类，可以有多个非<code>public</code>类，<strong>源文件名称应与<code>public</code>类保持一致</strong></li>
@@ -3322,10 +3322,12 @@
 <li><code>import</code>和<code>package</code>都是全局有效的，在同一个源文件中，不能给不同类不同的包声明</li>
 </ul>
 <h2 id="_2">反射</h2>
-<p>这是一个新概念，是一个强大的特性，提供了动态操作类的能力，允许程序在运行时查询、访问和修改类、接口、字段和方法的信息。通常有以下<strong>工作流程</strong>：
-* 获取Class对象：首先获取目标类的Class对象
-* 获取成员信息：通过Class对象，可以获取类的字段、方法、构造函数等信息
-* 操作成员：通过反射API可以读取和修改字段的值、调用方法以及创建对象</p>
+<p>这是一个新概念，是一个强大的特性，提供了动态操作类的能力，允许程序在运行时查询、访问和修改类、接口、字段和方法的信息。通常有以下<strong>工作流程</strong>：</p>
+<ul>
+<li>获取Class对象：首先获取目标类的Class对象</li>
+<li>获取成员信息：通过Class对象，可以获取类的字段、方法、构造函数等信息</li>
+<li>操作成员：通过反射API可以读取和修改字段的值、调用方法以及创建对象</li>
+</ul>
 <p>Java提供了以下API：</p>
 <ul>
 <li><code>java.lang.Class</code>:表示类的对象</li>
@@ -3342,10 +3344,12 @@
 <p><code>class</code>是由<code>JVM</code>在运行过程中<strong>动态加载的</strong>，<code>JVM</code>在读到一种<code>class</code>类型时，将其加载进内存，每加载一个<code>class</code>，<code>JVM</code>就为它创建一个<code>Class</code>实例，并关联起来，一个<code>Class</code>实例包含了<code>class</code>的全部信息，所以如果我们获取了一个<code>Class</code>实例，那么<code>class</code>的全部信息也就已知了，这个过程就叫做反射。</p>
 <p><strong>Java</strong>由于版本更新，这部分很多方法都已经弃用或者改进了，网上很多教程都过时了，建议真的得去编译器试试。</p>
 <h4 id="class">获取<code>Class</code></h4>
-<p>有三种方法获取<code>Class</code>：
-* 直接访问 类 的 class 属性
-* 通过实例变量获取
-* 通过完整类名获取</p>
+<p>有三种方法获取<code>Class</code>：</p>
+<ul>
+<li>直接访问 类 的 class 属性</li>
+<li>通过实例变量获取</li>
+<li>通过完整类名获取</li>
+</ul>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// &lt;?&gt; 表示任意泛型</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">cls1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">;</span>
@@ -3353,20 +3357,20 @@
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">cls3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Class</span><span class="p">.</span><span class="na">forName</span><span class="p">(</span><span class="s">&quot;java.lang.String&quot;</span><span class="p">);</span>
 </span></code></pre></div>
 <h4 id="_3">创建新对象</h4>
-<p>获取类的构造函数然后调用，通过反射拿到的函数可以和正常的函数一样地使用
+<p>获取类的构造函数然后调用，通过反射拿到的函数可以和正常的函数一样地使用</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">cls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">Constructor</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">Constructor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cls</span><span class="p">.</span><span class="na">getConstructor</span><span class="p">(</span><span class="n">cls</span><span class="p">);</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">String</span><span class="w"> </span><span class="n">s2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">Constructor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;s2: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s2</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出: s3: Hello, World!</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="_4">获取类的信息</h4>
-<p>这个就是调用相应的函数就可以知道相应信息，类名，修饰符，父类，接口都可以获取
+<p>这个就是调用相应的函数就可以知道相应信息，类名，修饰符，父类，接口都可以获取</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">;</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// 获取类名</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;类名: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w"> </span><span class="c1">// 输出: java.lang.String</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="_5">获取字段</h4>
-<p>java里面一般把变量叫做字段，这个不仅可以获得public字段，还可以获取private字段
+<p>java里面一般把变量叫做字段，这个不仅可以获得public字段，还可以获取private字段</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
@@ -3378,9 +3382,9 @@
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">allFields</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;字段: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">field</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w"> </span><span class="c1">// 输出: name, age</span>
 </span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="_6">获取方法</h4>
-<p>反射可以获取方法
+<p>反射可以获取方法</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span> <span class="nc">Calculator</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
@@ -3397,22 +3401,26 @@
 </span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">Method</span><span class="w"> </span><span class="n">addMethod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clazz</span><span class="p">.</span><span class="na">getMethod</span><span class="p">(</span><span class="s">&quot;add&quot;</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
 </span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">addMethod</span><span class="p">.</span><span class="na">invoke</span><span class="p">(</span><span class="n">calculator</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
 </span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;add 结果: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输出: 30</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h2 id="_7">注解</h2>
 <p>注解(Annotation)是Java的一种注释机制，Java 语言中的类、方法、变量、参数和包等都可以被标注。<code>@override</code>在java中其实就是一种注解</p>
 <h3 id="_8">内置注解</h3>
 <p>Java 定义了一套注解，共有 7 个，3 个在 java.lang 中，剩下 4 个在 java.lang.annotation 中。</p>
-<p>作用在代码的注解是：
-* <code>@Override</code>: 表示方法重写了父类中的方法。如果方法没有正确重写，编译器会报错。
-* <code>@Deprecated</code>：标记类、方法、字段已经过时，不推荐使用。编译器会发出警告
-* <code>@Surpresswarning</code>：抑制编译器警告</p>
-<p>作用在其它注解的注解，或者说元注解是：
-* <code>@Rentention</code>：表示这个注解怎么保存，是只在源代码中，还是编入class文件中，或者是在运行时可以通过反射访问
-* <code>@Documented</code>：标记这些注解是否在用户文档中
-* <code>@Target</code>：标记这个注解的对象是哪种java成员
-* <code>@Inherit</code>：标记注解是继承自哪个注解</p>
+<p>作用在代码的注解是：</p>
+<ul>
+<li><code>@Override</code>: 表示方法重写了父类中的方法。如果方法没有正确重写，编译器会报错。</li>
+<li><code>@Deprecated</code>：标记类、方法、字段已经过时，不推荐使用。编译器会发出警告</li>
+<li><code>@Surpresswarning</code>：抑制编译器警告</li>
+</ul>
+<p>作用在其它注解的注解，或者说元注解是：</p>
+<ul>
+<li><code>@Rentention</code>：表示这个注解怎么保存，是只在源代码中，还是编入class文件中，或者是在运行时可以通过反射访问</li>
+<li><code>@Documented</code>：标记这些注解是否在用户文档中</li>
+<li><code>@Target</code>：标记这个注解的对象是哪种java成员</li>
+<li><code>@Inherit</code>：标记注解是继承自哪个注解</li>
+</ul>
 <h3 id="_9">自定义注解</h3>
-<p>可以通过<code>@interface</code>关键字自定义注解
+<p>可以通过<code>@interface</code>关键字自定义注解</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.*</span><span class="p">;</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">METHOD</span><span class="p">)</span><span class="w"> </span><span class="c1">// 注解用于方法</span>
@@ -3421,7 +3429,7 @@
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">value</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&quot;default value&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 注解属性</span>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">count</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 另一个注解属性</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 
 
 
@@ -3444,7 +3452,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3454,7 +3462,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

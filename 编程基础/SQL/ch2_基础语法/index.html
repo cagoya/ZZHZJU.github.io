@@ -3373,7 +3373,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3784,8 +3784,8 @@
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>ZJU考试会考复杂的SQL语句，但事实上在开发中并不会写特别复杂的SQL语句，因为SQL天生不擅长处理复杂逻辑，逻辑的处理大部分应该由后端代码完成</p>
 </div>
+<p>ZJU考试会考复杂的SQL语句，但事实上在开发中并不会写特别复杂的SQL语句，因为SQL天生不擅长处理复杂逻辑，逻辑的处理大部分应该由后端代码完成</p>
 <p>SQL虽然有统一的标准，但是各家公司产品的语法并不完全统一，部分是因为不同的数据库公司要体现自己产品的特点。SQL语句可以分为DDL,DML和DCL三类。这篇文章里面是<code>mysql</code>和<code>sql server</code>语法都有，具体会有说明。</p>
 <h2 id="_1">语法及分类</h2>
 <h3 id="_2">通用规则</h3>
@@ -3811,15 +3811,15 @@
 </span></code></pre></div>
 <p>比如我新建一张图书的表，主键是书号，库存必须非负</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">book</span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">bno</span><span class="w">         </span><span class="nb">char</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">category</span><span class="w">    </span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">title</span><span class="w">       </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">press</span><span class="w">       </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="k">year</span><span class="w">        </span><span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">author</span><span class="w">      </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">price</span><span class="w">       </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">total</span><span class="w">       </span><span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">stock</span><span class="w">       </span><span class="nb">int</span><span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w"> </span><span class="n">bno</span><span class="w">   </span><span class="nb">char</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w"> </span><span class="n">category</span><span class="w">  </span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w"> </span><span class="n">title</span><span class="w">   </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w"> </span><span class="n">press</span><span class="w">  </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">),</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w"> </span><span class="k">year</span><span class="w">  </span><span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w"> </span><span class="n">author</span><span class="w">  </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w"> </span><span class="n">price</span><span class="w">  </span><span class="nb">decimal</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w"> </span><span class="n">total</span><span class="w">  </span><span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w"> </span><span class="n">stock</span><span class="w">  </span><span class="nb">int</span><span class="w"> </span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">-- 主键也可以写在最后</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="c1">-- PRIMARY KEY(bno)</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">stock</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -3845,9 +3845,9 @@
 </ul>
 <h4 id="_5">删除和修改</h4>
 <p>首先是删除表，一般来说可能会需要管理员权限</p>
-<p><div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名；</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名；</span>
 </span></code></pre></div>
-其次可以给表增加列，新增的列默认值是<code>null</code>，这个语法一般不会使用，因为应该在定义时就设计好表需要哪些元素</p>
+<p>其次可以给表增加列，新增的列默认值是<code>null</code>，这个语法一般不会使用，因为应该在定义时就设计好表需要哪些元素</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">D</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="err">（</span><span class="n">A1</span><span class="w"> </span><span class="n">D1</span><span class="p">,</span><span class="n">A2</span><span class="w"> </span><span class="n">D2</span><span class="p">,...,</span><span class="n">An</span><span class="w"> </span><span class="n">Dn</span><span class="err">）</span><span class="p">;</span>
 </span></code></pre></div>
@@ -3874,8 +3874,8 @@
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>有个冷知识，<code>SELECT 1</code>并非毫无意义，它常用于测试数据库连接；另外，SQL不允许在名称中有<code>-</code>，此外SQL中的名称是大小写不敏感的，一般关键字大写，其余小写。</p>
 </div>
+<p>有个冷知识，<code>SELECT 1</code>并非毫无意义，它常用于测试数据库连接；另外，SQL不允许在名称中有<code>-</code>，此外SQL中的名称是大小写不敏感的，一般关键字大写，其余小写。</p>
 <p>和关系代数不同，SQL是允许表中有重复和查询结果有重复的，我们可以使用<code>DISTINCT</code>来去重，与之相对的关键字是<code>ALL</code>，默认状态下就是<code>ALL</code></p>
 <p>SQL查询是允许进行计算的，对应广义投影，比如</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">salary</span><span class="o">/</span><span class="mi">1</span><span class="p">.</span><span class="mi">2</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">instructor</span>
@@ -3892,48 +3892,73 @@
 <p>condition 可以使用<code>AND</code> 、 <code>OR</code>和<code>NOT</code>以及<code>BETWEEN</code>连缀</p>
 <p>需要注意SQL里面的不等于是<code>&lt;&gt;</code>以及 <strong><code>WHERE</code>子句里面不允许有聚合函数</strong> ，这是因为 <code>WHERE</code> 子句用于在聚合之前过滤行，而聚合函数是对一组行进行计算。</p>
 <h4 id="order-by">ORDER BY 关键字</h4>
-<p>用于对结果集按照一个列或者多个列进行排序
+<p>用于对结果集按照一个列或者多个列进行排序</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span><span class="w"> </span><span class="c1">--默认是升序，但是经常需要的是降序</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="select-limit">SELECT LIMIT 子句</h4>
-<p>用于只需要查询前几行数据的情况，<code>mysql</code>是<code>LIMIT</code>但<code>sql server</code>是<code>TOP</code>
+<p>用于只需要查询前几行数据的情况，<code>mysql</code>是<code>LIMIT</code>但<code>sql server</code>是<code>TOP</code></p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">--这个是mysql的语法</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">LIMIT</span><span class="w"> </span><span class="n">number1</span>
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">OFFSET</span><span class="w"> </span><span class="n">number2</span><span class="p">;</span>
 </span></code></pre></div>
-这个表示从第<code>number2</code>条记录开始截取<code>number1</code>条记录</p>
+<p>这个表示从第<code>number2</code>条记录开始截取<code>number1</code>条记录</p>
 <h4 id="like">LIKE 操作符</h4>
-<p>用于模糊化查询，类似于正则表达式
+<p>用于模糊化查询，类似于正则表达式</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="k">column_name</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">pattern</span><span class="p">;</span>
 </span></code></pre></div>
-pattern中可以使用通配符：
-* <code>%</code>用于匹配任意字符串
-* <code>_</code>用于匹配单个字符
-* <code>[]</code>用于匹配字符列中的任何单一字符
-* <code>[^]</code>用于匹配不在字符列中的任何单一字符</p>
+<p>pattern中可以使用通配符：</p>
+<ul>
+<li><code>%</code>用于匹配任意字符串</li>
+<li><code>_</code>用于匹配单个字符</li>
+<li><code>[]</code>用于匹配字符列中的任何单一字符</li>
+<li><code>[^]</code>用于匹配不在字符列中的任何单一字符</li>
+</ul>
 <h4 id="_10">字符串操作</h4>
 <p>比如我想在查询结果前面加一串文字，在<code>mysql</code>里面是<code>CONCAT</code></p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;教师名=&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">instructors</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="p">...</span>
 </span></code></pre></div>
 <p>以及转换大小写，求字符串长度等操作都有相应函数，但其实前面说了这种处理逻辑最好不在SQL里面实现，而是在后端代码里面实现，SQL主要就用于查询</p>
 <h4 id="between">BETWEEN 操作符</h4>
-<p>用于选取介于两个值之间的数据范围内的值
+<p>用于选取介于两个值之间的数据范围内的值</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">column</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">value1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">value2</span><span class="p">;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="_11">聚合查询</h4>
-<p>对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，包括以下这些
-|函数|说明|
-|-|-|
-|COUNT|计算行数|
-|AVG|计算平均值|
-|SUM|计算最大值|
-|MAX|计算某一列的最大值|
-|MIN|计算某一列的最小值|</p>
+<p>对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，包括以下这些</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT</td>
+<td>计算行数</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>计算平均值</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>计算最大值</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>计算某一列的最大值</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>计算某一列的最小值</td>
+</tr>
+</tbody>
+</table>
 <p>注意除了<code>COUNT(*)</code>，其它的聚合函数都会忽略<code>NULL</code>，特别是<code>COUNT(column)</code>也会忽略<code>NULL</code></p>
 <p>SQL还提供了分组聚合的功能，可以用<code>GROUP BY</code>进行分组。需要注意在有聚合函数的情况下，不是聚合函数的属性必须在<code>GROUP BY</code>列表里面，换言之就是<code>SELECT</code> 子句中的列必须是聚合函数或 <code>GROUP BY</code> 子句中包含的列</p>
 <h4 id="having">HAVING 子句</h4>
@@ -3951,10 +3976,10 @@ pattern中可以使用通配符：
 <p>可以从查询结果里面提取信息，比如下面提取了24春所有课程的课程号，<code>in</code>表示<code>membership test</code>，对应的还有<code>not in</code></p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">section</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">semester</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fall&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">yaer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2025</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="k">and</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">course_id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">section</span>
 </span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="k">WHERE</span><span class="w"> </span><span class="n">semester</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Spring&#39;</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">            </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">         </span><span class="k">and</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2024</span>
 </span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">    </span><span class="p">);</span>
 </span></code></pre></div>
 <h3 id="some">some</h3>
@@ -3988,7 +4013,7 @@ pattern中可以使用通配符：
 <h4 id="with">WITH 语句</h4>
 <p>允许创建局部（针对一个查询语句而言）视图，学校给的服务器版本太低了，甚至不支持这个语法，建议lab都在本地做，上面那个查询语句可以改写为</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">WITH</span><span class="w"> </span><span class="n">dept_avg</span><span class="p">(</span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">avg_salary</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span>
 </span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">instructors</span>
 </span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">dept_name</span>
 </span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">avg_salary</span>
@@ -3997,34 +4022,34 @@ pattern中可以使用通配符：
 </span></code></pre></div>
 <h3 id="_19">修改与删除</h3>
 <h4 id="insert-into">INSERT INTO 语句</h4>
-<p>用于向表中插入新记录，没有指定要插入数据的列名的形式需要列出插入行的每一列名称:
+<p>用于向表中插入新记录，没有指定要插入数据的列名的形式需要列出插入行的每一列名称:</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">,...);</span>
 </span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1">--在高版本的 SQL Server里面允许一次性写多个VALUES</span>
 </span></code></pre></div>
-也可以指定列名和插入的值
+<p>也可以指定列名和插入的值</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="n">column1</span><span class="p">,</span><span class="n">column2</span><span class="p">,</span><span class="n">column3</span><span class="p">,...)</span>
 </span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">,</span><span class="n">value3</span><span class="p">,...);</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>View是虚表，对View的操作最后都会转化成对实表的操作，查询是一样的，但是更新有严格限制</p>
 <h4 id="update">UPDATE 语句</h4>
-<p>用于更新指定值，更新的顺序也很重要
+<p>用于更新指定值，更新的顺序也很重要</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="k">table_name</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">SET</span><span class="w"> </span><span class="n">column1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>UPDATE允许用<code>CASE</code>来实现条件修改</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">XXX</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">XXX</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="n">XXX</span>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">        </span><span class="k">THEN</span><span class="w"> </span><span class="n">XXX</span>
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="n">XXX</span>
-</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">        </span><span class="k">END</span><span class="p">;</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">XXX</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">XXX</span>
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="k">THEN</span><span class="w"> </span><span class="n">XXX</span>
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">  </span><span class="k">ELSE</span><span class="w"> </span><span class="n">XXX</span>
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="k">END</span><span class="p">;</span>
 </span></code></pre></div>
 <h4 id="delete">DELETE 语句</h4>
-<p>用于删除表中的行，删除是讲究顺序的，不能提前把之后还要用的信息删除，也不能一次性对多个表进行删除
+<p>用于删除表中的行，删除是讲究顺序的，不能提前把之后还要用的信息删除，也不能一次性对多个表进行删除</p>
 <div class="language-sql highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p><strong>在同一SQL语句内，除非外层查询的元组变量引入内层查询，否则内层查询只进行一次</strong>，这说明删除并不会影响内层查询的结果</p>
 <h3 id="_20">事务</h3>
 <p>事务可以看作一系列SQL操作，它们被打包成了一个整体，要么都完成，要么都不完成，如果全部完成则 commit，否则rollback。有些数据库是默认自动提交的，所以要首先关闭自动提交。</p>
@@ -4052,7 +4077,7 @@ pattern中可以使用通配符：
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -4062,7 +4087,7 @@ pattern中可以使用通配符：
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

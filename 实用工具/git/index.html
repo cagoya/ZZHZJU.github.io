@@ -1523,10 +1523,34 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="分支">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出储存库中的分支
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建分支
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       合并分支
     </span>
@@ -1535,7 +1559,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       删除分支
     </span>
@@ -3188,7 +3212,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3366,10 +3390,34 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="分支">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      列出储存库中的分支
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建分支
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       合并分支
     </span>
@@ -3378,7 +3426,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       删除分支
     </span>
@@ -3418,109 +3466,113 @@
 <p>当今世界上使用最广泛的<font color = red>分布式版本控制器</font>,是一个优质的开源项目。（你无需支付任何费用就可以使用）</p>
 <h2 id="git_2">如何安装Git？</h2>
 <p>和大多数工具一样安装方式因平台而异,可能低年级的同学几乎都是Windows吧。其实对于大多数用户来说，在你不懂这个选项到底代表着什么的情况下默认选项非常明智，<font color = purple>初学者就全选默认吧</font>( bishi),其实还是要注意一下，以免下了半天结果运行不了
-安装完 Git 之后，要做的第一件事就是设置自己的用户名和邮件地址。
+安装完 Git 之后，要做的第一件事就是设置自己的用户名和邮件地址。</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git config --global user.name &quot;Email Pairs&quot;
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git config --global user.email &quot;eparis@atlassian.com&quot;
 </span></code></pre></div>
-其中global 代表全局配置，当然与此相对应还有local 代表局部配置</p>
+<p>其中global 代表全局配置，当然与此相对应还有local 代表局部配置</p>
 <h2 id="git_3">Git 的基本操作</h2>
 <h3 id="git_4">在当前目录新建一个git代码库</h3>
-<p>初始化：
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git init
+<p>初始化：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git init
 </span></code></pre></div>
-  通常这是新项目中运行的第一个命令，大部分命令在未init的情况下不可用。
+<p>通常这是新项目中运行的第一个命令，大部分命令在未init的情况下不可用。
   执行此命令将在当前工作目录创建一个新的.git子目录（隐藏文件，也将创建一个新的主分支
-  在未初始化的情况下执行大多数git命令，将会得到以下报错
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>fatal: not a git repository (or any of the parent directories): .git
+  在未初始化的情况下执行大多数git命令，将会得到以下报错</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>fatal: not a git repository (or any of the parent directories): .git
 </span></code></pre></div>
-  也许和你想象的不太一样，你可以安全地在一个已经运行过git init 的项目目录上再次运行该命令。它不会覆盖现有的.git配置。</p>
+<p>也许和你想象的不太一样，你可以安全地在一个已经运行过git init 的项目目录上再次运行该命令。它不会覆盖现有的.git配置。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>切记：不要手动乱改.git文件，否则会破坏git仓库，.git文件的东西远比你想的要复杂</p>
 </div>
 <h3 id="_1">克隆</h3>
-<p>用于创建远程代码库的副本或克隆。目标代码存储库可以是本地的也可以是远程的。
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git clone &lt;repo url&gt;
+<p>用于创建远程代码库的副本或克隆。目标代码存储库可以是本地的也可以是远程的。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git clone &lt;repo url&gt;
 </span></code></pre></div>
-  下载一个项目和它的整个代码历史
-  其中url支持多种格式，如Git SSH URL：
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git@HOSTNAME:USERNAME/REPONAME.git
-</span></code></pre></div></p>
+<p>下载一个项目和它的整个代码历史
+  其中url支持多种格式，如Git SSH URL：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git@HOSTNAME:USERNAME/REPONAME.git
+</span></code></pre></div>
 <p>!!!note
     运行git init 和git clone都能在你的电脑上得到一个可用的git仓库，那它们有没有什么区别呢？
       省流：git clone 依赖于git init
       实际上 git clone 会先调用git init 来创建新的存储库，然后再从现有存储库中复制数据。</p>
 <h3 id="_2">保存变更</h3>
-<p>git add 会将文件添加到代码库暂存区域并创建一个包含消息的新提交。
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git add &lt;file&gt;
+<p>git add 会将文件添加到代码库暂存区域并创建一个包含消息的新提交。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git add &lt;file&gt;
 </span></code></pre></div>
-  将指定文件添加到暂存区
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git add &lt;directory&gt;
+<p>将指定文件添加到暂存区</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git add &lt;directory&gt;
 </span></code></pre></div>
-  添加指定目录到暂存区
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git add .
+<p>添加指定目录到暂存区</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git add .
 </span></code></pre></div>
-  将当前目录所有文件添加到暂存区 .代表当前目录
-  而git commit 会将文件提交到项目历史记录中。 
+<p>将当前目录所有文件添加到暂存区 .代表当前目录
+  而git commit 会将文件提交到项目历史记录中。
   git commit -a
-  提交工作区自上次commit的变化，直接到仓库区
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git commit -m &quot;commit message&quot;
+  提交工作区自上次commit的变化，直接到仓库区</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git commit -m &quot;commit message&quot;
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git commit -am &quot;commit message&quot;
-</span></code></pre></div></p>
+</span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>规范格式使用少于50个字符在第一行汇总提交，留一个空行，然后详细解释发生了什么变化。</p>
 </div>
 <h3 id="_3">忽略特殊文件</h3>
 <p>在git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，git就会自动忽略这些文件。
-  一些常见的被忽略的文件如下。
-  - 依赖性缓存
-  - 编译的代码
-  - 构建输出目录，如/bin、/out或/target
-  - 产生的运行时文件，如.log、.lock或.tmp
-  - 隐藏的系统文件，如Thumbs.db或.DS_Store
-  - 个人IDE配置文件，如.idea/workspace.xml</p>
+  一些常见的被忽略的文件如下。</p>
+<ul>
+<li>依赖性缓存</li>
+<li>编译的代码</li>
+<li>构建输出目录，如/bin、/out或/target</li>
+<li>产生的运行时文件，如.log、.lock或.tmp</li>
+<li>隐藏的系统文件，如Thumbs.db或.DS_Store</li>
+<li>个人IDE配置文件，如.idea/workspace.xml</li>
+</ul>
 <h3 id="_4">提交状态</h3>
 <p>可以使用git status来查看文件状态（可以加-s来简化结果
   完整的状态消息其实还包括暂存/取消暂存的相关说明。
   </br>
-  未跟踪文件：
-  - 尚未提交的文件
-  - 编译后的二进制文件（二进制文件其实也可以跟踪，但毫无价值，因为你只能知道一个二进制文件从1kb变到了2kb</p>
+  未跟踪文件：</p>
+<ul>
+<li>尚未提交的文件</li>
+<li>编译后的二进制文件（二进制文件其实也可以跟踪，但毫无价值，因为你只能知道一个二进制文件从1kb变到了2kb</li>
+</ul>
 <h3 id="_5">提交历史</h3>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git log
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git log
 </span></code></pre></div>
-  显示已提交快照，可以使用该命令来列出项目历史记录、对其进行筛选并搜索特定的变更。
-  git log 仅在已提交历史记录上运行 
+<p>显示已提交快照，可以使用该命令来列出项目历史记录、对其进行筛选并搜索特定的变更。
+  git log 仅在已提交历史记录上运行
   从上到下依次是版本号、提交人、时间、提交注释</p>
 <h3 id="_6">撤销操作</h3>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git reset
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git reset
 </span></code></pre></div>
-  git add 和 git commit 都可以用git reset来撤销。顺便一提，git reset最适用于撤销本地私有变更。</p>
+<p>git add 和 git commit 都可以用git reset来撤销。顺便一提，git reset最适用于撤销本地私有变更。</p>
 <h3 id="_7">连接远程库</h3>
 <p><code>git remote</code>命令允许您创建、查看和删除与其他存储库的连接。
   可以使用 <code>git remote -v</code>列出与其他存储库的远程链接
   git remote add <name> <url></p>
 <h3 id="_8">库间协作</h3>
 <p><code>git push</code>命令将代码推送到远程代码库，使其他成员能够访问到这一变更，这里我们用github作为远程仓库
-  创建与远程存储库的新连接
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git push &lt;remote&gt;&lt;branch&gt;
+  创建与远程存储库的新连接</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git push &lt;remote&gt;&lt;branch&gt;
 </span></code></pre></div>
-  移除与 ＜name＞ 远程存储库的连接
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git remote rm &lt;name&gt;
+<p>移除与 ＜name＞ 远程存储库的连接</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git remote rm &lt;name&gt;
 </span></code></pre></div>
-  <code>git pull</code>用于从远程存储库获取和下载内容，并更新本地存储库。
-  但实际上git push也是两个命令的组合（逗号前后各对应一个——<code>git fetch</code>+<code>git merge</code>
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git pull &lt;remote&gt;
-</span></code></pre></div></p>
+<p><code>git pull</code>用于从远程存储库获取和下载内容，并更新本地存储库。
+  但实际上git push也是两个命令的组合（逗号前后各对应一个——<code>git fetch</code>+<code>git merge</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git pull &lt;remote&gt;
+</span></code></pre></div>
 <h3 id="_9">配置和设置</h3>
-<p>显示当前git配置
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git config --list
+<p>显示当前git配置</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git config --list
 </span></code></pre></div>
-  将远程代码库URL添加到本地
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git push -u &lt;remote_name&gt; &lt;local_branch_name&gt;
+<p>将远程代码库URL添加到本地</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git push -u &lt;remote_name&gt; &lt;local_branch_name&gt;
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>git remote add &lt;remote_name&gt;&lt;remote_repo_url&gt;
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="git-ssh">什么是Git SSH 秘钥？</h3>
 <p>SSH密钥是SSH网络协议的访问凭证，用于不安全开放网络计算机之间的远程通信
   如何创建？
@@ -3534,36 +3586,36 @@
 <p><font color = red>请注意保护你的私钥。</font>公钥(.pub结尾)可以发给别人或上传到Github Settings中，私钥（无后缀名）永远不要放到网络上。<del>（毕竟你也不想···</del></p>
 </div>
 <h3 id="_10">分支</h3>
-<p>#### 列出储存库中的分支。
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git branch 列出所有本地分支
+<h4 id="_11">列出储存库中的分支</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>git branch 列出所有本地分支
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>        -r 列出所有的远程分支
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        -a 显示所有分支
-</span></code></pre></div></p>
-<p>#### 创建分支：
-  分支只是指向提交的指针，存储库的历史记录保持不变，如：
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git branch &lt;branch name&gt;
 </span></code></pre></div>
-  创建一个新分支，但不切换,  通过checkout来切换分支。
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git checkout &lt;branch&gt;
+<h4 id="_12">创建分支</h4>
+<p>分支只是指向提交的指针，存储库的历史记录保持不变，如：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>git branch &lt;branch name&gt;
 </span></code></pre></div>
-  创建远程分支必须首先配置远程代码存储库并将其添加到本地代码存储库配置中</p>
-<h3 id="_11">合并分支</h3>
-<p>将指定分支合并到当前分支，需要处理冲突部分（沟通协商、手动解决）
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git merge &lt;branch&gt;
+<p>创建一个新分支，但不切换,  通过checkout来切换分支。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>git checkout &lt;branch&gt;
 </span></code></pre></div>
-  </br>
+<p>创建远程分支必须首先配置远程代码存储库并将其添加到本地代码存储库配置中</p>
+<h3 id="_13">合并分支</h3>
+<p>将指定分支合并到当前分支，需要处理冲突部分（沟通协商、手动解决）</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git merge &lt;branch&gt;
+</span></code></pre></div>
+<p></br>
   将特定 commit 合并进当前分支</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git cherry-pick &lt;commit id&gt;
 </span></code></pre></div>
-<h3 id="_12">删除分支</h3>
-<p>删除本地分支
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git branch -d &lt;branch&gt;
+<h3 id="_14">删除分支</h3>
+<p>删除本地分支</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git branch -d &lt;branch&gt;
 </span></code></pre></div>
-  <br></br>
-  删除远程分支
-  <div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>git push &lt;remote&gt; --delete &lt;branch&gt;
+<p><br></br>
+  删除远程分支</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>git push &lt;remote&gt; --delete &lt;branch&gt;
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>git branch -dr &lt;remote&gt;/&lt;branch&gt;
-</span></code></pre></div></p>
+</span></code></pre></div>
 
 
 
@@ -3586,7 +3638,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3596,7 +3648,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

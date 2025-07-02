@@ -3274,7 +3274,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3586,17 +3586,17 @@
 </div>
 <h2 id="_2">函数</h2>
 <h3 id="_3">定义函数</h3>
-<p>Python 使用 <code>def</code> 关键字定义函数，函数本质上是对象。
+<p>Python 使用 <code>def</code> 关键字定义函数，函数本质上是对象。</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">pass</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>  <span class="c1"># 输出：&lt;class &#39;function&#39;&gt;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="lambda">匿名函数（Lambda 表达式）</h3>
-<p>匿名函数使用 <code>lambda</code> 定义，仅适用于简单的一行函数体，主要是因为python靠缩进来判断代码块，如果函数体复杂，那么缩进会很麻烦，所以python不支持多行lambda：
+<p>匿名函数使用 <code>lambda</code> 定义，仅适用于简单的一行函数体，主要是因为python靠缩进来判断代码块，如果函数体复杂，那么缩进会很麻烦，所以python不支持多行lambda：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">g</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>  <span class="c1"># 输出：&lt;class &#39;function&#39;&gt;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_4">函数参数</h3>
 <h4 id="_5">位置参数 &amp; 关键字参数</h4>
 <ul>
@@ -3648,7 +3648,8 @@
 <li><strong>全局命名空间</strong>：模块级别的变量；</li>
 <li><strong>局部命名空间</strong>：函数内部变量；</li>
 <li>查找顺序为：<code>局部 → 全局 → 内置</code>；</li>
-<li>若需在函数内部修改全局变量，使用 <code>global</code> 关键字声明：
+<li>若需在函数内部修改全局变量，使用 <code>global</code> 关键字声明：</li>
+</ul>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">modify</span><span class="p">():</span>
@@ -3658,14 +3659,13 @@
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># 结果为 2</span>
 </span></code></pre></div>
-这是是错误的，因为<code>x</code>会被当做一个局部变量，然后对一个未定义的变量 +1 会报错
+<p>这是是错误的，因为<code>x</code>会被当做一个局部变量，然后对一个未定义的变量 +1 会报错</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">f</span><span class="p">()</span>
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 <h2 id="_10">常用内置函数（部分）</h2>
 <ul>
 <li><code>sorted(iterable, key=None, reverse=False)</code>：排序，可迭代对象都行</li>
@@ -3680,27 +3680,29 @@
 <h2 id="_11">模块与包</h2>
 <h3 id="_12">模块</h3>
 <p>每个 <code>.py</code> 文件都是一个模块。</p>
-<p><strong>导入方式：</strong>
+<p><strong>导入方式：</strong></p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">模块名</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">模块名</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">别名</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">模块名</span><span class="w"> </span><span class="kn">import</span> <span class="n">函数或变量</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="package">包（Package）</h3>
 <p>包是带有 <code>__init__.py</code> 文件的文件夹（可为空），用于组织多个模块。</p>
-<p>跨目录导入模块：
+<p>跨目录导入模块：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;your/path/here&quot;</span><span class="p">)</span>  <span class="c1"># 添加路径到搜索路径中</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h2 id="_13">迭代器与生成器</h2>
 <h3 id="_14">迭代器</h3>
 <p>迭代器是一个表示数据流的对象，这个对象每次只返回一个元素，Python迭代器必须支持<code>__next__</code>方法，这个方法不接受参数，并总是返回数据流中的下一个元素。如果数据流中没有元素，<code>__next__</code>会抛出<code>StopInteration</code>异常。迭代器未必是有限的。</p>
 <p>迭代器未必是可迭代对象，可迭代对象是可以用<code>for</code>循环生成值序列的任何对象，可以用内置函数<code>iter()</code>尝试把任意对象转化成可迭代对象，如果对象不支持<code>iter</code>语法，用<code>for</code>语句循环时会抛出<code>TypeError</code>，<code>iter</code>的参数的格式如下：<code>iter(object,[sentinel])</code>，第一个参数是支持<code>__iter__</code>的对象，第二个参数是触发<code>StopInteration</code>的条件。</p>
 <h3 id="_15">生成器</h3>
 <p>普通函数返回一个值，而生成器返回一个产生数据流的迭代器。生成器在退出一个函数的时候不扔掉局部变量而且可以在退出函数的地方重新恢复运行，生成器可以看作一个可恢复的函数。</p>
-<p><code>yield</code>语句仅在定义生成器函数的时候使用，并且仅被用于生成器函数的函数体内部。<code>yield</code>有两种形式：
-* <code>yield 表达式</code>
-* <code>yield from 生成器</code></p>
-<p>生成器的一个很好的例子是
+<p><code>yield</code>语句仅在定义生成器函数的时候使用，并且仅被用于生成器函数的函数体内部。<code>yield</code>有两种形式：</p>
+<ul>
+<li><code>yield 表达式</code></li>
+<li><code>yield from 生成器</code></li>
+</ul>
+<p>生成器的一个很好的例子是</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">flat</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -3713,18 +3715,20 @@
 </span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">flat</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
 </span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="n">flatlst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 </span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">flatlst</span><span class="p">)</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>生成器在处理大数据量时很有作用，生成器返回一个像列表一样的对象，但和普通列表不同，它一次只生成一个对象，而不是生成全部对象再返回，这被称作惰性计算。</p>
 <h2 id="_16">函数是一等对象</h2>
-<p>通常把“一等对象”定义为：
-* 在运行时创建
-* 能赋值给变量或者数据结构的元素
-* 能作为参数传递给函数
-* 能作为函数的返回结果</p>
+<p>通常把“一等对象”定义为：</p>
+<ul>
+<li>在运行时创建</li>
+<li>能赋值给变量或者数据结构的元素</li>
+<li>能作为参数传递给函数</li>
+<li>能作为函数的返回结果</li>
+</ul>
 <p>简单理解为函数名其实是一个变量，可以对它进行赋值、返回等操作，函数对象有一个<code>__name__</code>属性，是函数的名称。</p>
 <h3 id="_17">用户定义的可调用类型</h3>
 <p>既然Python中的函数可以当作对象，那么为什么对象不能当作函数调用？为此，只需要实现实例方法<code>__call__</code></p>
-<p><div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">BingoCage</span><span class="p">:</span>
 </span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">items</span><span class="p">):</span>
@@ -3738,13 +3742,13 @@
 </span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pick</span><span class="p">()</span>
 </span></code></pre></div>
-<code>BingoCage</code>本身可以当作函数调用，相当于是<code>BingoCage.pick()</code>的快捷方式</p>
+<p><code>BingoCage</code>本身可以当作函数调用，相当于是<code>BingoCage.pick()</code>的快捷方式</p>
 <h2 id="_18">装饰器</h2>
 <h3 id="_19">基础知识</h3>
 <p>装饰器是一种可调用对象，其参数是另外一个函数（被装饰的函数）。装饰器可能会对被装饰的函数做一些处理，然后返回函数，或者把函数替换成另一个函数或可调用对象，作用是可以动态地给函数添加功能。实际上，装饰器就是一个返回函数的高阶函数</p>
 <p><strong>装饰器有一个关键特性，它们在被装饰的函数定义之后立即执行，这通常是在导入时。</strong></p>
 <h3 id="_20">作用域规则</h3>
-<p>Python的规则和C/C++有一点点区别，比如
+<p>Python的规则和C/C++有一点点区别，比如</p>
 <div class="language-c++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -3760,7 +3764,7 @@
 </span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 </span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">}</span>
 </span></code></pre></div>
-这段代码显然是正确的，<code>f</code>里面的<code>int b</code>定义的局部变量虽然会覆盖全局的<code>b</code>，但是全局的<code>b</code>先被输出了，所以结果是<code>3 6</code>。但是换成python，结果就不一样了
+<p>这段代码显然是正确的，<code>f</code>里面的<code>int b</code>定义的局部变量虽然会覆盖全局的<code>b</code>，但是全局的<code>b</code>先被输出了，所以结果是<code>3 6</code>。但是换成python，结果就不一样了</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -3768,8 +3772,8 @@
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    <span class="n">b</span> <span class="o">=</span> <span class="mi">9</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </span></code></pre></div>
-这段代码会直接报错，错误是<code>UnboundLocalError: cannot access local variable 'b' where it is not associated with a value</code>，这说明Python判定<code>b</code>是局部变量，会尝试从局部获取值，但是一开始又没有赋值，所以会直接报错。这并不是bug，而是一种设计选择：Python不要求声明变量，但是会<strong>假定在函数主体中赋值的变量是局部变量</strong>。</p>
-<p>此外，Python其实针对上述问题提供了解决方案，即使用<code>global</code>指定b为全局变量，注意<code>b</code>运行后的值是9
+<p>这段代码会直接报错，错误是<code>UnboundLocalError: cannot access local variable 'b' where it is not associated with a value</code>，这说明Python判定<code>b</code>是局部变量，会尝试从局部获取值，但是一开始又没有赋值，所以会直接报错。这并不是bug，而是一种设计选择：Python不要求声明变量，但是会<strong>假定在函数主体中赋值的变量是局部变量</strong>。</p>
+<p>此外，Python其实针对上述问题提供了解决方案，即使用<code>global</code>指定b为全局变量，注意<code>b</code>运行后的值是9</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="k">global</span> <span class="n">b</span>
@@ -3777,8 +3781,8 @@
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    <span class="n">b</span> <span class="o">=</span> <span class="mi">9</span>
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span></code></pre></div></p>
-<p>另外Python的局部作用域也是特殊的，if-else，for,while中定义的“临时”变量其实会一直存在，比如
+</span></code></pre></div>
+<p>另外Python的局部作用域也是特殊的，if-else，for,while中定义的“临时”变量其实会一直存在，比如</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">):</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">y</span><span class="o">=</span><span class="mi">1</span>
@@ -3786,9 +3790,9 @@
 </span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">y</span><span class="o">=</span><span class="mi">2</span>
 </span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># 输出 1</span>
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_21">闭包</h3>
-<p>闭包其实就是延伸了作用域的函数，包括函数主体中的非全局变量和局部变量。
+<p>闭包其实就是延伸了作用域的函数，包括函数主体中的非全局变量和局部变量。</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 动态返回平均值</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_averager</span><span class="p">():</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">series</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3803,8 +3807,8 @@
 </span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">avg</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
 </span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">avg</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 </span></code></pre></div>
-<code>series</code>是<code>make_averager</code>函数的局部变量，但是我们其实只调用了一次<code>make_averager</code>，当调用<code>avg</code>的时候<code>make_averager</code>已经返回，局部作用域已经消失，<code>series</code>就变成了一个自由变量（即未在局部作用域中绑定），但是它是仍然存在的。</p>
-<p>也许你会觉得上面那段代码写的并不好，为什么要用一个列表存？直接记录总和以及总数量不行吗？还真不行
+<p><code>series</code>是<code>make_averager</code>函数的局部变量，但是我们其实只调用了一次<code>make_averager</code>，当调用<code>avg</code>的时候<code>make_averager</code>已经返回，局部作用域已经消失，<code>series</code>就变成了一个自由变量（即未在局部作用域中绑定），但是它是仍然存在的。</p>
+<p>也许你会觉得上面那段代码写的并不好，为什么要用一个列表存？直接记录总和以及总数量不行吗？还真不行</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">make_averager</span><span class="p">():</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
@@ -3817,8 +3821,8 @@
 </span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="n">avg</span> <span class="o">=</span> <span class="n">make_averager</span><span class="p">()</span>
 </span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="n">avg</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span></code></pre></div>
-事实上这段代码会报错<code>UnboundLocalError: cannot access local variable 'count' where it is not associated with a value</code>，原因是在<code>average</code>中对<code>count</code>赋值了，这会导致<code>count</code>被认为是局部变量，就不再是自由变量，也就不在闭包中了。为了解决这个问题Python提供了<code>nonlocal</code>关键字，它的作用是把变量标记为自由变量，如果为<code>nonlocal</code>声明的变量赋予新值，那么闭包中绑定的值也会随之更新。</p>
-<p>还有就是返回闭包时<strong>不能包含循环变量</strong>，因为返回函数并没有被立即执行
+<p>事实上这段代码会报错<code>UnboundLocalError: cannot access local variable 'count' where it is not associated with a value</code>，原因是在<code>average</code>中对<code>count</code>赋值了，这会导致<code>count</code>被认为是局部变量，就不再是自由变量，也就不在闭包中了。为了解决这个问题Python提供了<code>nonlocal</code>关键字，它的作用是把变量标记为自由变量，如果为<code>nonlocal</code>声明的变量赋予新值，那么闭包中绑定的值也会随之更新。</p>
+<p>还有就是返回闭包时<strong>不能包含循环变量</strong>，因为返回函数并没有被立即执行</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">():</span>
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="n">f</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
@@ -3829,7 +3833,7 @@
 </span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="c1"># 答案都是2，因为这三个函数都是同一个闭包，i最后为2</span>
 </span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
 </span></code></pre></div>
-如果一定要这么干该怎么办，可以再套一层函数
+<p>如果一定要这么干该怎么办，可以再套一层函数</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">count</span><span class="p">():</span>
 </span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="n">f</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
@@ -3839,7 +3843,7 @@
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="k">return</span> <span class="n">f</span>
 </span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># 答案依次是 0,1,2 因为g被立即调用了，所以绑定到的是当时的循环变量值</span>
 </span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_22">实现装饰器</h3>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># 可以打印出函数调用的耗时，接受的参数和返回的值</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
@@ -3883,7 +3887,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3893,7 +3897,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

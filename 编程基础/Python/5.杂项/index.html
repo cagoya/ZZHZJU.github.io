@@ -3166,7 +3166,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3370,8 +3370,8 @@
 </div>
 <h3 id="_2">关于输入输出</h3>
 <ul>
-<li>
-<p>print函数输出字符串，如果不打逗号是不会有空格的，打了逗号会有一个空格
+<li>print函数输出字符串，如果不打逗号是不会有空格的，打了逗号会有一个空格</li>
+</ul>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;&quot;world&quot;</span><span class="p">)</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># helloworld</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span> <span class="s2">&quot;world&quot;</span><span class="p">)</span>
@@ -3380,32 +3380,39 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># hello world</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span><span class="s2">&quot;world&quot;</span><span class="p">)</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># hello world</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
+<ul>
+<li>格式化字符串</li>
+<li>
+<p>C风格：Python中一般不使用</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My name is </span><span class="si">%s</span><span class="s2"> and I am </span><span class="si">%d</span><span class="s2"> years old.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+</span></code></pre></div>
 </li>
 <li>
-<p>格式化字符串</p>
+<p><code>str.format()</code>：Python风格的格式化字符串</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pi is approximately </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.1415926</span><span class="p">))</span>  <span class="c1"># 保留2位小数</span>
+</span></code></pre></div>
 </li>
-<li>C风格：Python中一般不使用
-      <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My name is </span><span class="si">%s</span><span class="s2"> and I am </span><span class="si">%d</span><span class="s2"> years old.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
-</span></code></pre></div></li>
-<li><code>str.format()</code>：Python风格的格式化字符串
-      <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pi is approximately </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">3.1415926</span><span class="p">))</span>  <span class="c1"># 保留2位小数</span>
-</span></code></pre></div></li>
-<li><code>f-string</code>，新的格式化字符串
-      <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
+<li>
+<p><code>f-string</code>，新的格式化字符串</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">num</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">&lt;5d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 左对齐，宽度为5</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">^5d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 居中对齐</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">*^5d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 居中对齐并用*填充</span>
-</span></code></pre></div></li>
-<li><code>print(f"{3.1415926:.2}")</code>输出是<code>3.1</code>，因为这个并不是保留两位小数而是保留两位有效数字，根本原因是没有指定类型，所以触发了默认的有效位数，正确的保留两位小数应该是<code>print(f"3.1415926:.2f}")</code></li>
+</span></code></pre></div>
+</li>
+<li>
+<p><code>print(f"{3.1415926:.2}")</code>输出是<code>3.1</code>，因为这个并不是保留两位小数而是保留两位有效数字，根本原因是没有指定类型，所以触发了默认的有效位数，正确的保留两位小数应该是<code>print(f"3.1415926:.2f}")</code></p>
+</li>
 <li>Python的默认对齐方式是字符串左对齐(<code>&lt;</code>)，数字右对齐<code>&gt;</code></li>
 </ul>
 <h3 id="_3">关于类型转换</h3>
 <ol>
 <li><strong>Python始终是动态类型的语言</strong>，即便如今有什么类型提示之类的东西，类型提示的语法<code>def f(text : str) -&gt; None</code></li>
 <li><code>int(num, base=10)</code>
-如果是不写第二个参数，那么默认是十进制，可以处理各种类型，包括字符串，类比特对象或者是一个实数，但是不能为空
+如果是不写第二个参数，那么默认是十进制，可以处理各种类型，包括字符串，类比特对象或者是一个实数，但是不能为空</li>
+</ol>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">int</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># 10</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">int</span><span class="p">(</span><span class="mf">10.6</span><span class="p">)</span>
@@ -3415,13 +3422,12 @@
 </span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">int</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># TypeError</span>
 </span></code></pre></div>
-第二参数代表从多少进制转换到十进制，默认是十进制，如果写了第二个参数，第一个参数就必须是字符串
+<p>第二参数代表从多少进制转换到十进制，默认是十进制，如果写了第二个参数，第一个参数就必须是字符串</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;10&quot;</span><span class="err">，</span> <span class="mi">8</span><span class="p">)</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># 8</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">int</span><span class="p">(</span><span class="mf">10.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># TypeError</span>
-</span></code></pre></div></li>
-</ol>
+</span></code></pre></div>
 <h3 id="_4">关于列表</h3>
 <ul>
 <li>Python的list是支持存储不同类型的元素的</li>
@@ -3429,16 +3435,18 @@
 <li><code>[4, 5] * 3</code>的结果为<code>[4, 5, 4, 5, 4, 5]</code></li>
 <li>列表喜欢考切片slice，形如<code>[begin:end:step]</code>，但是可以省略参数，具体是哪个参数是按<code>:</code>来确定的，还有就是Python支持反向索引，最后一个元素的编号是-1</li>
 <li>列表切片超出索引范围也不会报错，但是直接访问越界会报错<code>IndexError</code></li>
-<li>切片赋值语法，可以用切片接受一个别的<strong>列表</strong>，用来替换切片所表示的那一段
+<li>切片赋值语法，可以用切片接受一个别的<strong>列表</strong>，用来替换切片所表示的那一段</li>
+</ul>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># 操作后 l是[1, 2, 3, 4, 5]</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 但是注意，如果是把切片赋值给一个变量，那么这个变量是列表的浅拷贝</span>
-</span></code></pre></div></li>
-<li>列表生成式可以带筛选条件
-<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-</span></code></pre></div></li>
+</span></code></pre></div>
+<ul>
+<li>列表生成式可以带筛选条件</li>
 </ul>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</span></code></pre></div>
 <h3 id="dict">关于dict</h3>
 <ul>
 <li>dict是没有默认值的，访问不存在的键会抛出错误，如果要修改键值应该先检查有没有</li>
@@ -3453,11 +3461,13 @@
 <li>交集<code>|</code>，并集<code>&amp;</code>，差集是<code>-</code>，对称差集是<code>^</code></li>
 </ul>
 <h3 id="_5">关于字符串</h3>
-<p>内置方法的方法名看起来都是小写的
-* 大小写处理，包括<code>upper()</code>，<code>lower()</code>等
-* 查找与替换，<code>find</code>找不到会返回-1，但是<code>index</code>找不到会报错
-* 分割与连接：分割使用<code>split</code>，连接使用<code>join</code>
-* 判断类型：<code>isalpha()</code>，<code>isdigit()</code>，<code>isalnum()</code>,<code>islower()</code>,<code>isupper()</code></p>
+<p>内置方法的方法名看起来都是小写的</p>
+<ul>
+<li>大小写处理，包括<code>upper()</code>，<code>lower()</code>等</li>
+<li>查找与替换，<code>find</code>找不到会返回-1，但是<code>index</code>找不到会报错</li>
+<li>分割与连接：分割使用<code>split</code>，连接使用<code>join</code></li>
+<li>判断类型：<code>isalpha()</code>，<code>isdigit()</code>，<code>isalnum()</code>,<code>islower()</code>,<code>isupper()</code></li>
+</ul>
 <h3 id="_6">拆包和解包</h3>
 <ul>
 <li><code>i, *j = [1, 2, 3]</code>的结果为<code>i=1, j=[2, 3]</code></li>
@@ -3501,13 +3511,13 @@
 <li><code>import math as m</code>实际上导入了<code>math</code>包的，但是这个包现在的名称是<code>m</code>，直接用<code>math</code>会报错</li>
 <li>关键字参数必须在位置参数后面，位置参数已经对应了的参数不能重复赋值</li>
 </ul>
-<p>python中的函数都是对象，所以如果去查函数的类型会返回<code>function</code>，但是用print去输出就不一样了，对此的解释为<code>type()</code>返回值的类型为<code>type</code>，返回值本身确实是<code>function</code>，但是要使用<code>print</code>输出需要调<code>__repr__</code>转化为字符串
+<p>python中的函数都是对象，所以如果去查函数的类型会返回<code>function</code>，但是用print去输出就不一样了，对此的解释为<code>type()</code>返回值的类型为<code>type</code>，返回值本身确实是<code>function</code>，但是要使用<code>print</code>输出需要调<code>__repr__</code>转化为字符串</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 假设是在交互式解释器环境，f是一个函数</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># 结果应该是function</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="c1"># 结果应该是&lt;class &#39;function&#39;&gt;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_11">关于异常</h3>
-<p>Python的异常捕获格式长这样，异常本质上是一个对象，所以可以自定义异常：
+<p>Python的异常捕获格式长这样，异常本质上是一个对象，所以可以自定义异常：</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="k">pass</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
@@ -3515,9 +3525,9 @@
 </span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">raise</span> <span class="n">MyError</span><span class="p">(</span><span class="s2">&quot;这是一个自定义异常&quot;</span><span class="p">)</span>
 </span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="k">except</span> <span class="n">MyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 </span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;捕获到自定义异常：</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_12">浅拷贝和深拷贝</h3>
-<p>对于简单类型，浅拷贝和深拷贝其实没什么区别，因为它们是不可变的，<code>id()</code>在<code>Python</code>中返回一个对象的“标识值”，这个标识值是一个整数，它在对象生命周期中是唯一且恒定的，可以把它理解为对象的地址。
+<p>对于简单类型，浅拷贝和深拷贝其实没什么区别，因为它们是不可变的，<code>id()</code>在<code>Python</code>中返回一个对象的“标识值”，这个标识值是一个整数，它在对象生命周期中是唯一且恒定的，可以把它理解为对象的地址。</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="c1"># 对于小的整数和字符串，Python 会进行对象复用，所以id可能相同</span>
@@ -3527,7 +3537,7 @@
 </span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c1"># False，此时 a = 2 , b = 1</span>
 </span></code></pre></div>
-但是对于可变类型的拷贝，浅拷贝和深拷贝是可能有区别的，Python中的<code>copy</code>模块提供了浅拷贝和深拷贝，浅拷贝是<code>copy.copy</code>，深拷贝是<code>copy.deepcopy</code>
+<p>但是对于可变类型的拷贝，浅拷贝和深拷贝是可能有区别的，Python中的<code>copy</code>模块提供了浅拷贝和深拷贝，浅拷贝是<code>copy.copy</code>，深拷贝是<code>copy.deepcopy</code></p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 这里依次列举所有可能情况，非常容易混，主要是解释器有些时候的行为比较 confusing</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span> <span class="c1"># l1 和 l2 是同一个对象，因为赋值其实是赋值的指针</span>
@@ -3535,7 +3545,7 @@
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">l4</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c1"># l1 和 l4 是不同的对象，因为 copy.copy 是浅拷贝</span>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">l5</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span> <span class="c1"># l1 和 l5 是不同的对象，因为 copy.deepcopy 是深拷贝</span>
 </span></code></pre></div>
-单层的列表深浅拷贝其实看不出区别，但是多层的列表深拷贝和浅拷贝是不同的
+<p>单层的列表深浅拷贝其实看不出区别，但是多层的列表深拷贝和浅拷贝是不同的</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">l2</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">l3</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
@@ -3543,7 +3553,7 @@
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">l1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">l2</span><span class="p">)</span> <span class="c1"># [1, [5, 3]]</span>
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">l3</span><span class="p">)</span> <span class="c1"># [1, [2, 3]]</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_13">其他</h3>
 <ul>
 <li><code>\ooo</code>（三位八进制数）或者<code>\xhh</code>（两位十六进制数）都表示一个转义字符，比如<code>\141</code>表示<code>a</code>，<code>\x61</code>也表示<code>a</code></li>
@@ -3555,16 +3565,15 @@
 <li>序列赋值<code>a,b = "12"</code>，这个的结果是<code>a="1", b="2"</code></li>
 <li>运算符优先级大概是幂、正负、乘除取模、加减、比较、逻辑否、与、或</li>
 <li><code>**</code>是右结合的</li>
-<li>
-<p><code>split()</code>会使用任意空白字符作为分隔符进行分割，<code>split(' ')</code>按单个空格进行分割，多个空格被视为多个分隔符，并且会生成空的子字符串
+<li><code>split()</code>会使用任意空白字符作为分隔符进行分割，<code>split(' ')</code>按单个空格进行分割，多个空格被视为多个分隔符，并且会生成空的子字符串</li>
+</ul>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="s2">&quot;a   b&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="c1"># 结果为 [&#39;a&#39;, &#39;b&#39;]</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s2">&quot;a   b&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="c1"># 结果为 [&#39;a&#39;, &#39;&#39;, &#39; &#39;, &#39;b&#39;]</span>
-</span></code></pre></div></p>
-</li>
-<li>
-<p>只有<code>str</code>有<code>find</code>方法，</p>
-</li>
-<li><code>enumerate()</code>可以在遍历时获取索引
+</span></code></pre></div>
+<ul>
+<li>只有<code>str</code>有<code>find</code>方法，</li>
+<li><code>enumerate()</code>可以在遍历时获取索引</li>
+</ul>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;cherry&quot;</span><span class="p">]</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruits</span><span class="p">):</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;索引: </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">, 水果: </span><span class="si">{</span><span class="n">fruit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -3573,8 +3582,7 @@
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="sd">索引: 1, 水果: banana</span>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="sd">索引: 2, 水果: cherry</span>
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="sd">&#39;&#39;&#39;</span>
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 <h3 id="_14">运算符优先级</h3>
 <ol>
 <li>括号<code>()</code></li>
@@ -3610,7 +3618,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3620,7 +3628,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

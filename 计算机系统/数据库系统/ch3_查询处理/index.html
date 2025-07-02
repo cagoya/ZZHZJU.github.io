@@ -3166,7 +3166,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3402,57 +3402,75 @@
 <li>析取：如果都有索引可以用索引然后取并，否则直接线性扫描</li>
 </ol>
 <h2 id="_8">排序</h2>
-<p>外部排序，这里是merge sort，假设有$M <span class="arithmatex">\(个block大小的内存：
-1. 创建归并段，应该有\)</span>N = \lceil\log_M(b_r)\rceil $
-2. 归并
-   1. $M &gt; N $，一次归并就可以解决
-   2. $M \leq N <span class="arithmatex">\(，需要多次归并，应该需要\)</span>\lceil\log_{M-1}(N)\rceil $轮</p>
-<ul>
-<li>每个归并轮次和产生归并段都是把所有块，读一次，写一次，但是我们一律不考虑最后一次写，所以block transer的开销为$2b_r\lceil\log_{M-1}(\frac{b_r}{M})\rceil + b_r $</li>
+<p>外部排序，这里是merge sort，假设有$M $个block大小的内存：</p>
+<ol>
+<li>创建归并段，应该有$N = \lceil\log_M(b_r)\rceil $</li>
+<li>归并</li>
+<li>$M &gt; N $，一次归并就可以解决</li>
+<li>
+<p>$M \leq N <span class="arithmatex">\(，需要多次归并，应该需要\)</span>\lceil\log_{M-1}(N)\rceil $轮</p>
+</li>
+<li>
+<p>每个归并轮次和产生归并段都是把所有块，读一次，写一次，但是我们一律不考虑最后一次写，所以block transer的开销为$2b_r\lceil\log_{M-1}(\frac{b_r}{M})\rceil + b_r $</p>
+</li>
 <li>在生成归并段时，每个 run 只需要读写分别寻道一次，然后在归并时需要$2b_r <span class="arithmatex">\(次寻道，所以 seek 的开销为\)</span>2\lceil\frac{b_r}{M}\rceil + 2b_r\lceil\log_{M-1}(\frac{b_r}{M})\rceil - b_r $</li>
-</ul>
+</ol>
 <p>!!!note 如何简单理解？
     相当于把block变大了，所以现在只有$\lceil\frac{b_r}{b_b}\rceil <span class="arithmatex">\(个block，内存大小为\)</span>\lfloor\frac{M}{b_b}\rfloor <span class="arithmatex">\(，至于为什么一个向上取整，另一个向下取整，原因是分到最后残存的不足\)</span>b_b <span class="arithmatex">\(大小的块必须当作完整的\)</span>b_b $，但是最后残存的不足的内存却是无法使用的。</p>
 <p>这个还可以改进，因为这里内存有剩余的话，可以选择在一次性读写多个块($b_b <span class="arithmatex">\(个)，然后transfer的开销就变为了\)</span>2b_r\lceil\log_{\lfloor\frac{M}{b_b}\rfloor-1}(\frac{b_r}{M})\rceil + b_r <span class="arithmatex">\(，seek的开销变为了\)</span>2\lceil\frac{b_r}{M}\rceil + 2\lceil\frac{b_r}{b_b}\rceil\lceil\log_{\frac{M}{b_b}-1}\lfloor(\frac{b_r}{M})\rfloor-\lceil\frac{b_r}{b_b}\rceil <span class="arithmatex">\(，但是这个\)</span>b_b $如何取值完全是个优化问题，需要用数学（或者机器学习）之类的方法解决。</p>
 <h2 id="_9">连接</h2>
 <p>这里疑似不考虑写的开销，因为最后满足join出来的tuple数应该都是一样的。</p>
 <h3 id="nested-loop-join">nested loop join</h3>
-<p>对于 outer relation的每一个 tuple，都去遍历一次 inner relation 的每一个 tuple
-* transfer cost:$n_r*b_s + b_r $
-* seek cost:$n_r+b_r $</p>
+<p>对于 outer relation的每一个 tuple，都去遍历一次 inner relation 的每一个 tuple</p>
+<ul>
+<li>transfer cost:$n_r*b_s + b_r $</li>
+<li>seek cost:$n_r+b_r $</li>
+</ul>
 <h3 id="block-nested-loop-join">block nested loop join</h3>
-<p>对于 outer relation的每一个 block，对于这个block中的每一个tuple,都去遍历一次 inner relation 的每一个 tuple
-* transfer cost:$b_r*b_s + b_r $
-* seek cost:$2b_r $</p>
-<p>如果内存中可以放下$r <span class="arithmatex">\(（假设\)</span>r <span class="arithmatex">\(为小的那个），则为最优情况：
-* transfer cost:\)</span>b_r + b_s $
-* seek cost:$2 $</p>
-<p>这个有和 merge sort差不多的优化，因为如果可以完全把一个 relation 放到内存中是很好的，如果不行，可以尽量一次多放一些，假设我们内存大小为$M $
-* transfer cost:$\lceil\frac{b_r}{M-2}\rceil b_s+b_r $
-* seek cost:$2\lceil\frac{b_r}{M-2}\rceil $</p>
+<p>对于 outer relation的每一个 block，对于这个block中的每一个tuple,都去遍历一次 inner relation 的每一个 tuple</p>
+<ul>
+<li>transfer cost:$b_r*b_s + b_r $</li>
+<li>seek cost:$2b_r $</li>
+</ul>
+<p>如果内存中可以放下$r <span class="arithmatex">\(（假设\)</span>r $为小的那个），则为最优情况：</p>
+<ul>
+<li>transfer cost:$b_r + b_s $</li>
+<li>seek cost:$2 $</li>
+</ul>
+<p>这个有和 merge sort差不多的优化，因为如果可以完全把一个 relation 放到内存中是很好的，如果不行，可以尽量一次多放一些，假设我们内存大小为$M $</p>
+<ul>
+<li>transfer cost:$\lceil\frac{b_r}{M-2}\rceil b_s+b_r $</li>
+<li>seek cost:$2\lceil\frac{b_r}{M-2}\rceil $</li>
+</ul>
 <h3 id="indexed-nested-loop-join">Indexed nested-loop join</h3>
 <p>用索引找出对应的 tuple，适用于有索引（没有可以建，自底向上的B+树构建开销并不大）并且是等值连接和自然连接的情况，开销为$b_r(t_T+t_S)+n_r*c <span class="arithmatex">\(，其中\)</span>c $是遍历B+树取出对应的所有元组的开销。</p>
 <h3 id="merge-join">merge join</h3>
-<p>在 join-atribute 上排序，然后遍历两个排好序的relation，和merge sort的归并很像，也是适用于等值连接和自然连接的情况，假设已经排好序则开销为（注意主需要遍历一次所有block）：
-* transfer cost:$b_r + b_s $ 
-* seek cost:$\lceil\frac{b_r}{b_b}\rceil + \lceil\frac{b_s}{b_b}\rceil $</p>
+<p>在 join-atribute 上排序，然后遍历两个排好序的relation，和merge sort的归并很像，也是适用于等值连接和自然连接的情况，假设已经排好序则开销为（注意主需要遍历一次所有block）：</p>
+<ul>
+<li>transfer cost:$b_r + b_s $</li>
+<li>seek cost:$\lceil\frac{b_r}{b_b}\rceil + \lceil\frac{b_s}{b_b}\rceil $</li>
+</ul>
 <p>但是平分内存其实并不是最优的，seek 的开销实际可以表示为$\lceil\frac{b_r}{x_r}\rceil + \lceil\frac{b_s}{x_s}\rceil(x_r+x_s=M) $（什么均值不等式</p>
 <p>hybird merge-join:如果有一个 relation 排好序了，另一个有二级索引，B+树的叶子节点是有序的，但是二级索引物理空间上是不连续的，所以要先和地址连接，然后对地址排序，再去取出真正的值</p>
 <h3 id="hash-join">hash join</h3>
 <p>对于 equal-join 和 nartual-join有效，对JoinAttrs使用哈希函数，把JoinAttrs映射到0~n，然后$r <span class="arithmatex">\(和\)</span>s <span class="arithmatex">\(分别划分成了\)</span>r_0 <span class="arithmatex">\(~\)</span>r_n <span class="arithmatex">\(和\)</span>s_0 <span class="arithmatex">\(~\)</span>s_n $</p>
 <p>n和h要求能够使每个$s_i <span class="arithmatex">\(（注意没有要求\)</span>r_i <span class="arithmatex">\(）都能够放进内存，即\)</span>n\geq \lceil\frac{b_s}{M}\rceil <span class="arithmatex">\(，然后合并时只需要\)</span>r_i <span class="arithmatex">\(和\)</span>s_i <span class="arithmatex">\(进行比较就行，通常n被取作\)</span>\lceil\frac{b_s}{M}\rceil*f <span class="arithmatex">\(，其中\)</span>f $被称作修正因子。</p>
-<p>流程如下：
-1. 划分 s，需要留一个block来输出
-2. 划分 r
-3. 对于每个 i:
-   1. 把$s_i <span class="arithmatex">\(读进内存，然后建一个内存中的哈希索引，这个哈希索引需要使用不同的哈希函数
-   2. 从外存中读出\)</span>r_i <span class="arithmatex">\(，对于\)</span>r_i $的每一个 tuple 依次去用哈希索引检索匹配的tuple</p>
+<p>流程如下：</p>
+<ol>
+<li>划分 s，需要留一个block来输出</li>
+<li>划分 r</li>
+<li>对于每个 i:</li>
+<li>把$s_i $读进内存，然后建一个内存中的哈希索引，这个哈希索引需要使用不同的哈希函数</li>
+<li>从外存中读出$r_i <span class="arithmatex">\(，对于\)</span>r_i $的每一个 tuple 依次去用哈希索引检索匹配的tuple</li>
+</ol>
 <p>s 叫做 build input r 叫做 probe input</p>
 <p>递归划分，如果 n 比 M还大了则需要递归划分，在划分的时候只能先划分为 M - 1份，然后再用不同的哈希函数划分为 M-1 份，对 r 也做同样的划分，如果$M &gt; \frac{b_s}{M} + 1\approx n <span class="arithmatex">\(，可以近似估计为\)</span>M&gt;\sqrt{b_s} $</p>
-<p>哈希索引的开销有点复杂，如果没有递归划分：
-* transfer cost:$3(b_r+b_s)+4n_h <span class="arithmatex">\(，因为划分阶段相当于读写一次r和s，然后build and probe阶段要读一次，但是可能会出现填不满的 block，极端情况下每个分段都会有，即\)</span>n_h <span class="arithmatex">\(份
-* seek cost:\)</span>2(\lceil\frac{b_r}{b_b}\rceil + \lceil\frac{b_s}{b_b}\rceil) + 2n_h $
-如果有递归划分，其实影响的就是划分的次数</p>
+<p>哈希索引的开销有点复杂，如果没有递归划分：</p>
+<ul>
+<li>transfer cost:$3(b_r+b_s)+4n_h <span class="arithmatex">\(，因为划分阶段相当于读写一次r和s，然后build and probe阶段要读一次，但是可能会出现填不满的 block，极端情况下每个分段都会有，即\)</span>n_h $份</li>
+<li>seek cost:$2(\lceil\frac{b_r}{b_b}\rceil + \lceil\frac{b_s}{b_b}\rceil) + 2n_h $
+如果有递归划分，其实影响的就是划分的次数</li>
+</ul>
 
 
 
@@ -3475,7 +3493,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3485,7 +3503,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

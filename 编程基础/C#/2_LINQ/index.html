@@ -3064,7 +3064,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3167,7 +3167,7 @@
 <p>LINQ(语言集成查询)是C#的统一查询语法，用于不同源和格式检索数据，用处类似于JDBC，但是用途更广泛，不仅仅可以用于数据库，还可以用于集合，<code>XML Docs</code>等。</p>
 <h2 id="_1">语法</h2>
 <h3 id="_2">表达式</h3>
-<p>其实还挺简单，就类似于SQL，比如
+<p>其实还挺简单，就类似于SQL，比如</p>
 <div class="language-csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">IList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(){</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;C++&quot;</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="s">&quot;Java&quot;</span><span class="p">,</span>
@@ -3181,8 +3181,8 @@
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1">// 等价于</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kt">var</span><span class="w"> </span><span class="n">result2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringList</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Contains</span><span class="p">(</span><span class="s">&quot;C++&quot;</span><span class="p">))</span>
 </span></code></pre></div>
-上面其实给出了两种写法，第一种真的很像SQL查询，另一种改为了使用<code>lambda</code>表达式</p>
-<p>查询变量的源数据必须是<code>IEnumerable&lt;T&gt;</code>或者<code>IQueryable&lt;T&gt;</code>集合，查询并不会立即执行，只有当查询变量被遍历时才会真的去执行并返回结果，所以查询变量是可以被多次使用的，比如
+<p>上面其实给出了两种写法，第一种真的很像SQL查询，另一种改为了使用<code>lambda</code>表达式</p>
+<p>查询变量的源数据必须是<code>IEnumerable&lt;T&gt;</code>或者<code>IQueryable&lt;T&gt;</code>集合，查询并不会立即执行，只有当查询变量被遍历时才会真的去执行并返回结果，所以查询变量是可以被多次使用的，比如</p>
 <div class="language-csharp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 使用foreach遍历输出</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">foreach</span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">{</span>
@@ -3190,7 +3190,7 @@
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1">// 直接转化成列表</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kt">var</span><span class="w"> </span><span class="n">resList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>查询表达式可能会包含多个<code>from</code>子句，相当于分层遍历查找，如果是<code>select</code>则是查找出满足条件的对象，如果是<code>group by</code>那么则是生成按照指定键组织的序列，查询结果也可以用于构造其他对象，包括内置的字符串乃至其它任何自定义类。同<code>SQL</code>，有<code>where</code>，<code>join</code>,<code>orderby</code>、<code>from</code>、等可选子句，此外比较不同的是可以使用<code>let</code>将表达式的结果储存在新的范围变量中，使用<code>into</code>创建存储查询的临时标志符，类似于SQL的子查询，子查询语法同样是有的。</p>
 <h3 id="_3">编写</h3>
 <p>正如上面所说我们有两种写法，查询语句的写法非常直观，需要注意的是方法语句，熟悉<code>IEnumerable&lt;T&gt;</code>就可以知道它并没有<code>Where</code>方法，但是在IDE里面编写代码时又确实会有内敛提示，这是因为标准查询运算符是作为扩展方法来实现的，所以当作是<code>IEnumerable</code>的方法就好，比如</p>
@@ -3220,7 +3220,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3230,7 +3230,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

@@ -3157,7 +3157,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3348,7 +3348,7 @@
 
 <h1 id="_1">索引</h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 1265 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 3 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 4 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 1258 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> 1 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 3 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 4 分钟</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3366,24 +3366,26 @@
 <h3 id="_4">多级索引</h3>
 <p>如果主索引放不到内存中，开销会很大，可以对主索引再建一个稀疏索引，如果还是不行可以继续加级，但是更新时所有层级必须同步更新。</p>
 <h2 id="b">B+ 树</h2>
-<p>B+ 树是平衡的，内节点必须是$\lceil \frac{n}{2} \rceil <span class="arithmatex">\(到\)</span>n <span class="arithmatex">\(个孩子，叶子节点必须是\)</span>\lceil \frac{n-1}{2} \rceil <span class="arithmatex">\(到\)</span>n-1 $个记录，其实可以统一记忆为节点数， DB课程的B+树叶子节点和内节点的结构就是统一的，不像某ads的神奇B+树，特别地，根节点不是叶子的话至少要有两个孩子，然后DB B+树的叶子节点还会再指向对应数据记录的指针（或者直接存储数据记录本身，但更常见的是指针）。</p>
+<p>B+ 树是平衡的，内节点必须是 $\lceil \frac{n}{2} \rceil <span class="arithmatex">\(到\)</span>n $ 个孩子，叶子节点必须是 $\lceil \frac{n-1}{2} \rceil $ 到 $n-1 $ 个记录，其实可以统一记忆为节点数， DB课程的B+树叶子节点和内节点的结构就是统一的，不像某ads的神奇B+树，特别地，根节点不是叶子的话至少要有两个孩子，然后DB B+树的叶子节点还会再指向对应数据记录的指针（或者直接存储数据记录本身，但更常见的是指针）。</p>
 <h3 id="_5">节点结构</h3>
-<p>B+ 树的节点结构为
+<p>B+ 树的节点结构为</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>P1 K1 P2 K2 ... Pn-1 Kn-1 Pn
 </span></code></pre></div>
-其中<span class="arithmatex">\(P_i\)</span>是第<span class="arithmatex">\(i\)</span>个孩子的地址，<span class="arithmatex">\(K_i\)</span>是第<span class="arithmatex">\(i\)</span>个键，其他的要求和ads的B+树一样。</p>
+<p>其中<span class="arithmatex">\(P_i\)</span>是第<span class="arithmatex">\(i\)</span>个孩子的地址，<span class="arithmatex">\(K_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 个键，其他的要求和ads的B+树一样。</p>
 <h3 id="_6">特性</h3>
 <ul>
 <li>因为内存中的关系是通过指针连接的，所以逻辑上相邻的块，物理上不一定相邻。</li>
 <li>非叶子层实际上构成了一个稀疏索引</li>
-<li>B+树是一个扁平化的结构，树高不会超过<span class="arithmatex">\(log_{\lceil \frac{n}{2} \rceil}(K)\)</span>，其中<span class="arithmatex">\(K\)</span>是键的个数</li>
+<li>B+树是一个扁平化的结构，树高不会超过 <span class="arithmatex">\(log_{\lceil \frac{n}{2} \rceil}(K)\)</span>，其中<span class="arithmatex">\(K\)</span>是键的个数</li>
 </ul>
 <h3 id="_7">操作</h3>
-<p>流程和 ads 讲的没什么不同，这里写一些结论：
-* node的大小通常和block是一样的，通常是 4 kilobytes
-* 分裂是$\lceil \frac{n}{2} \rceil <span class="arithmatex">\(留在分裂前的节点，其余的移到新节点，新节点的父节点是分裂前节点的父节点如果父节点不满足要求则递归分裂
-* 合并，是把搜索键全部移入左边的兄弟节点，并删除右边的节点，然后删除父节点的指针，如果父节点不满足要求则递归合并
-* 如果搜索键不唯一，那么构造一个复合属性\)</span>(a_i,A_p) <span class="arithmatex">\(，其中\)</span>A_p <span class="arithmatex">\(是主键（至少是唯一的），然后搜索\)</span>a_i = v $就变成了范围搜索</p>
+<p>流程和 ads 讲的没什么不同，这里写一些结论：</p>
+<ul>
+<li>node的大小通常和block是一样的，通常是 4 kilobytes</li>
+<li>分裂是$\lceil \frac{n}{2} \rceil $留在分裂前的节点，其余的移到新节点，新节点的父节点是分裂前节点的父节点如果父节点不满足要求则递归分裂</li>
+<li>合并，是把搜索键全部移入左边的兄弟节点，并删除右边的节点，然后删除父节点的指针，如果父节点不满足要求则递归合并</li>
+<li>如果搜索键不唯一，那么构造一个复合属性 $(a_i,A_p) $，其中 $A_p <span class="arithmatex">\(是主键（至少是唯一的），然后搜索\)</span>a_i = v $就变成了范围搜索</li>
+</ul>
 <h3 id="b_1">B+ 树文件组织</h3>
 <p>B+ 树文件组织是B+ 树的叶子节点构成了一个顺序文件，但是因为 record 比 pointer 大，所以叶子节点中能存的 record 树少于内节点能存的pointer 数，可以通过在分配时限制必须有更多孩子能优化空间利用率。</p>
 <p>如果一条记录移动了，整个索引都必须被更新，分裂节点的开销变得很大，解决方法是在二级索引中使用主索引的搜索键。</p>
@@ -3400,11 +3402,13 @@
 <h3 id="lsm-tree">LSM-tree</h3>
 <p>LSM Tree(Log Structured Merge Tree) 并不是严格的树状数据结构，它是一种存储模式，核心特点是利用直接在内存中写来提高写性能，但因为分层(此处分层是指的分为内存和文件两部分)的设计会稍微降低读性能。</p>
 <p><img alt="alt text" src="../figures/%E7%B4%A2%E5%BC%95/image1.png" /></p>
-<p>流程是：
-1. 先写到内存中的$L_0 $
-2. 如果内存中的$L_0 <span class="arithmatex">\(满了，就将\)</span>L_0 <span class="arithmatex">\(合并到外存中的\)</span>L_1 <span class="arithmatex">\(，\)</span>L_1 <span class="arithmatex">\(的合并策略是自底向上构建
-3. 如果\)</span>L_1 <span class="arithmatex">\(满了，就将\)</span>L_1 <span class="arithmatex">\(合并到\)</span>L_2 <span class="arithmatex">\(，以此类推
-4. 每一层至少大\)</span>k $倍</p>
+<p>流程是：</p>
+<ol>
+<li>先写到内存中的$L_0 $</li>
+<li>如果内存中的$L_0 $满了，就将 $L_0 $ 合并到外存中的$L_1 <span class="arithmatex">\(，\)</span>L_1 $的合并策略是自底向上构建</li>
+<li>如果$L_1 $满了，就将 $L_1 $ 合并到 $L_2 $，以此类推</li>
+<li>每一层至少大 $k $ 倍</li>
+</ol>
 <p>删除实现为再维护一颗删除的表（相当于标记为删除），在合并时达成真正删除，更新也是先删后插。</p>
 <p>它还可以有变体 stepped-merge index，即每一层有多颗树，进一步减小了写的开销，但是读的开销变大了。</p>
 <p><img alt="alt text" src="../figures/%E7%B4%A2%E5%BC%95/image2.png" /></p>
@@ -3432,7 +3436,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3442,7 +3446,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

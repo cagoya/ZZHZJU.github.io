@@ -3185,7 +3185,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3410,11 +3410,13 @@
 </div>
 <h2 id="_1">简介</h2>
 <p>LaTeX 是一种基于标记语言的排版系统，广泛用于科学、技术、工程和数学文档的撰写。你要写论文就离不开Latex，当然如果你愿意用word写你的毕业论文，那么请随意。下面这段文字摘自CS170</p>
-<p>You’re welcome to produce your homework PDF in various ways: <span class="arithmatex">\(\LaTeX\)</span>, some other word processor, or neatly handwriting and scanning. We strongly advise using LaTeX. Here’s why:
-* LaTeX documents are beautiful and a joy to read.
-* LaTeX is ubiquitous across mathematics and the sciences, so learning it is a sound investment.
-* Many past CS 170 readers believe that LaTeXed solutions tend to be correct more often.
-* CS170 is typically the class where students take time to learn LaTeX, which is a valuable skill to have.</p>
+<p>You’re welcome to produce your homework PDF in various ways: <span class="arithmatex">\(\LaTeX\)</span>, some other word processor, or neatly handwriting and scanning. We strongly advise using LaTeX. Here’s why:</p>
+<ul>
+<li>LaTeX documents are beautiful and a joy to read.</li>
+<li>LaTeX is ubiquitous across mathematics and the sciences, so learning it is a sound investment.</li>
+<li>Many past CS 170 readers believe that LaTeXed solutions tend to be correct more often.</li>
+<li>CS170 is typically the class where students take time to learn LaTeX, which is a valuable skill to have.</li>
+</ul>
 <h2 id="_2">环境配置</h2>
 <ol>
 <li>在线环境 <a href="https://cn.overleaf.com/">overleaf</a>：好处是不用配本地环境，而且支持多人协作，坏处是编译时间有限制，但一般是超不了的</li>
@@ -3448,18 +3450,20 @@
 </ul>
 <h3 id="5">5. 列表</h3>
 <ul>
-<li><strong>无序列表</strong>：
-    <div class="language-latex highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<li>
+<p><strong>无序列表</strong>：</p>
+<p><div class="language-latex highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">\item</span> 项目1
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">\item</span> 项目2
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
-</span></code></pre></div></li>
-<li><strong>有序列表</strong>：
-    <div class="language-latex highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+</span></code></pre></div>
+* <strong>有序列表</strong>：</p>
+<div class="language-latex highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">\item</span> 项目1
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">\item</span> 项目2
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
-</span></code></pre></div></li>
+</span></code></pre></div>
+</li>
 </ul>
 <h3 id="6">6. 数学公式</h3>
 <ul>
@@ -3467,12 +3471,12 @@
 <li><strong>独立公式</strong>：<code>\[ 公式 \]</code> 或 <code>\begin{equation} 公式 \end{equation}</code></li>
 </ul>
 <h3 id="7">7. 矩阵</h3>
-<p><div class="language-latex highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">\begin</span><span class="nb">{</span>matrix<span class="nb">}</span>
+<div class="language-latex highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">\begin</span><span class="nb">{</span>matrix<span class="nb">}</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>a <span class="nb">&amp;</span> b <span class="k">\\</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>c <span class="nb">&amp;</span> d <span class="k">\\</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">\end</span><span class="nb">{</span>matrix<span class="nb">}</span>
 </span></code></pre></div>
-需要使用 <code>\begin{pmatrix}</code>、<code>\begin{bmatrix}</code> 或 <code>\begin{vmatrix}</code> 来分别生成带圆括号、方括号或竖线的矩阵。</p>
+<p>需要使用 <code>\begin{pmatrix}</code>、<code>\begin{bmatrix}</code> 或 <code>\begin{vmatrix}</code> 来分别生成带圆括号、方括号或竖线的矩阵。</p>
 <h3 id="8">8. 表格</h3>
 <div class="language-latex highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">\begin</span><span class="nb">{</span>tabular<span class="nb">}{</span>|c|c|<span class="nb">}</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">\hline</span>
@@ -3493,12 +3497,14 @@
 <h3 id="10">10. 引用与参考文献</h3>
 <ul>
 <li><strong>引用公式或图表</strong>：<code>\ref{label}</code></li>
-<li><strong>参考文献</strong>：
-    <div class="language-latex highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">\begin</span><span class="nb">{</span>thebibliography<span class="nb">}{</span>99<span class="nb">}</span>
+<li>
+<p><strong>参考文献</strong>：</p>
+<div class="language-latex highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">\begin</span><span class="nb">{</span>thebibliography<span class="nb">}{</span>99<span class="nb">}</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">\bibitem</span><span class="nb">{</span>label1<span class="nb">}</span> 参考文献1
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">\bibitem</span><span class="nb">{</span>label2<span class="nb">}</span> 参考文献2
 </span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">\end</span><span class="nb">{</span>thebibliography<span class="nb">}</span>
-</span></code></pre></div></li>
+</span></code></pre></div>
+</li>
 </ul>
 <h3 id="11">11. 注释</h3>
 <div class="language-latex highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% 这是一行注释</span>
@@ -3529,7 +3535,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3539,7 +3545,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

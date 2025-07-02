@@ -3136,7 +3136,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3310,68 +3310,80 @@
 </div>
 <p>C#是一种跨平台的通用语言，是最受欢迎的<code>.NET</code>语言，是微软为了替代Java而开发的一门语言，但是这一目的事实上并未实现。C#是一门“很甜”的语言，有非常多的语法糖，这一篇并不会涉及那些“奇奇怪怪”的语法。</p>
 <h2 id="_1">基础</h2>
-<p>C#名字里面带C，语法依旧是C/C++-like的，因为是对标的Java，所以事实上特性方面会更像Java
-1. C#文件名可以不同于类名
-2. <code>using</code>关键字用于包含命名空间，一个程序可以包含多个<code>using</code>语句
-3. C#数据类型：
-   1. 值类型
-   2. 引用类型：
+<p>C#名字里面带C，语法依旧是C/C++-like的，因为是对标的Java，所以事实上特性方面会更像Java</p>
+<ol>
+<li>C#文件名可以不同于类名</li>
+<li><code>using</code>关键字用于包含命名空间，一个程序可以包含多个<code>using</code>语句</li>
+<li>C#数据类型：</li>
+<li>值类型</li>
+<li>引用类型：
         * 对象类型：<code>System.Object</code>是C#通用类型系统中所有数据类型的终极基类
-        * 动态类型：提供了以一种类似于动态语言的语法，用<code>dynamic</code>关键字声明，但是一般不推荐使用
-   3. 指针类型：同C/C++
-4. C#提供了内置的类型转换方法，形如<code>Toxxx</code>，这些方法都定义在<code>System.Convert</code>类中，失败会抛出<code>FormatExcption</code>，除此以外，有<code>Parse</code>方法用于将字符串转换成对应数值类型
-5. <code>is</code>关键字用于判断对象是否为某一类型
-6. C# 提供<code>foreach</code>语法，形如<code>foreach(var item in collection)</code>，<code>var</code>表示自动类型匹配，相当于C++的 auto
-7. C# 封装访问修饰符多了
-   * <code>internal</code>：同一个程序集的对象可以访问
-   * <code>protected internal</code>：访问限于当前程序集或派生自包含类的类型
-8. C#引用传参使用<code>ref</code>声明引用参数
-9. <code>out</code>关键字可用于从函数中输出参数给另一个函数
-10. C# 提供了一个特殊的数据类型，nullable类型（可空类型），表示在基础值类型范围附加上一个null值，可以用<code>?</code>声明可空类型，可以用<code>??</code>叫做null合并运算符，如果第一个操作数为null则返回第二个操作数
-11. 数组，声明风格同Java
-12. 字符串，声明风格同Java,String类有两个属性：<code>chars</code>获取<code>Char</code>对象的指定位置，<code>Length</code>获取String的字符数，常用方法有
-    * Compare
-    * Contains
-    * Substring
-13. C# 中结构体并不是类：
-    * 可以定义构造函数（只能定义含参的，不含参的是默认的）但是不能定义析构函数  不能继承自或者被继承 
-    * 结构可以不使用New就实例化，但是如果不使用New，只有在所有字段都被初始化后，字段才会被赋值
-    * 结构默认是可变的，有点像JS/Python的类
-    * 结构是值类型，默认在栈上
-14. 继承写法同C++，有<code>abstract</code>，<code>interface</code>关键字，不支持多继承，可以用<code>sealed</code>禁止被继承，有虚方法，关键字还是<code>virtual</code>
-15. C# 支持重载运载运算符
-16. 预处理器指令，类似于C的宏定义，但并不是宏，主要用途是条件编译</p>
+        * 动态类型：提供了以一种类似于动态语言的语法，用<code>dynamic</code>关键字声明，但是一般不推荐使用</li>
+<li>指针类型：同C/C++</li>
+<li>C#提供了内置的类型转换方法，形如<code>Toxxx</code>，这些方法都定义在<code>System.Convert</code>类中，失败会抛出<code>FormatExcption</code>，除此以外，有<code>Parse</code>方法用于将字符串转换成对应数值类型</li>
+<li><code>is</code>关键字用于判断对象是否为某一类型</li>
+<li>C# 提供<code>foreach</code>语法，形如<code>foreach(var item in collection)</code>，<code>var</code>表示自动类型匹配，相当于C++的 auto</li>
+<li>C# 封装访问修饰符多了</li>
+<li><code>internal</code>：同一个程序集的对象可以访问</li>
+<li><code>protected internal</code>：访问限于当前程序集或派生自包含类的类型</li>
+<li>C#引用传参使用<code>ref</code>声明引用参数</li>
+<li><code>out</code>关键字可用于从函数中输出参数给另一个函数</li>
+<li>C# 提供了一个特殊的数据类型，nullable类型（可空类型），表示在基础值类型范围附加上一个null值，可以用<code>?</code>声明可空类型，可以用<code>??</code>叫做null合并运算符，如果第一个操作数为null则返回第二个操作数</li>
+<li>数组，声明风格同Java</li>
+<li>字符串，声明风格同Java,String类有两个属性：<code>chars</code>获取<code>Char</code>对象的指定位置，<code>Length</code>获取String的字符数，常用方法有<ul>
+<li>Compare</li>
+<li>Contains</li>
+<li>Substring</li>
+</ul>
+</li>
+<li>C# 中结构体并不是类：<ul>
+<li>可以定义构造函数（只能定义含参的，不含参的是默认的）但是不能定义析构函数  不能继承自或者被继承</li>
+<li>结构可以不使用New就实例化，但是如果不使用New，只有在所有字段都被初始化后，字段才会被赋值</li>
+<li>结构默认是可变的，有点像JS/Python的类</li>
+<li>结构是值类型，默认在栈上</li>
+</ul>
+</li>
+<li>继承写法同C++，有<code>abstract</code>，<code>interface</code>关键字，不支持多继承，可以用<code>sealed</code>禁止被继承，有虚方法，关键字还是<code>virtual</code></li>
+<li>C# 支持重载运载运算符</li>
+<li>预处理器指令，类似于C的宏定义，但并不是宏，主要用途是条件编译</li>
+</ol>
 <h2 id="_2">进阶</h2>
 <h3 id="_3">特性</h3>
 <p>特性(Attribute)是一类声明性标签，用于添加元数据，如编译器指令和注释、描述等其他信息，和Java的注解用法基本相同</p>
-<p>规定特性的语法如下：
+<p>规定特性的语法如下：</p>
 <div class="language-Csharp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">[attribute(positional_parameters, name_parameter = value, ...)]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">element</span>
 </span></code></pre></div>
-<code>.Net</code>框架提供了三种预定义特性：
-* AttributeUsage：描述如何使用一个自定义特性类
-* Conditional：标记一个条件方法，其执行依赖于指定的预处理标识符
-* Obsolete：标记不应被使用的程序实体，比如过时的旧方法</p>
+<p><code>.Net</code>框架提供了三种预定义特性：</p>
+<ul>
+<li>AttributeUsage：描述如何使用一个自定义特性类</li>
+<li>Conditional：标记一个条件方法，其执行依赖于指定的预处理标识符</li>
+<li>Obsolete：标记不应被使用的程序实体，比如过时的旧方法</li>
+</ul>
 <p>创建自定义特性，一个新的自定义特性应继承自<code>System.Attribute</code>类</p>
 <h3 id="_4">反射</h3>
-<p>反射是指程序可以访问、检测和修改它本身状态的一种能力，在C#里面有如下用途，和Java差不多：
-* 查看特性信息
-* 获取类型信息（如类名、方法名）
-* 调用方法或访问属性/字段
-* 检查或修改私有成员</p>
-<p>C# 中反射的核心类位于<code>System.Reflection</code>，核心类和方法有：
-* <code>Type</code>：可以用<code>typeof(ClassNmae)</code>静态获取类型，也可以用<code>object.GetType()</code>从实例动态获取类型
-* <code>MethodInfo</code>、<code>PropertyInfo</code>、<code>FieldInfo</code>，字面意思
-* <code>Activator</code>可用于动态创建对象实例</p>
+<p>反射是指程序可以访问、检测和修改它本身状态的一种能力，在C#里面有如下用途，和Java差不多：</p>
+<ul>
+<li>查看特性信息</li>
+<li>获取类型信息（如类名、方法名）</li>
+<li>调用方法或访问属性/字段</li>
+<li>检查或修改私有成员</li>
+</ul>
+<p>C# 中反射的核心类位于<code>System.Reflection</code>，核心类和方法有：</p>
+<ul>
+<li><code>Type</code>：可以用<code>typeof(ClassNmae)</code>静态获取类型，也可以用<code>object.GetType()</code>从实例动态获取类型</li>
+<li><code>MethodInfo</code>、<code>PropertyInfo</code>、<code>FieldInfo</code>，字面意思</li>
+<li><code>Activator</code>可用于动态创建对象实例</li>
+</ul>
 <h3 id="_5">属性</h3>
 <p>属性(property)是类和结构体中用于封装数据的成员，可以看作是字段包装器，通常由<code>get</code>和<code>set</code>访问器构成，相当于其他语言里面的<code>get</code>和<code>set</code>方法</p>
-<p>C#允许使用自动实现的属性，比如
+<p>C#允许使用自动实现的属性，比如</p>
 <div class="language-Csharp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;}</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_6">索引器</h3>
-<p>索引器允许一个对象像数组一样使用下标方式访问，一维索引器语法如下，可以看到索引器在定义时是没有名称的，但是有<code>this</code>关键字
+<p>索引器允许一个对象像数组一样使用下标方式访问，一维索引器语法如下，可以看到索引器在定义时是没有名称的，但是有<code>this</code>关键字</p>
 <div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">element</span><span class="o">-</span><span class="n">type</span><span class="w"> </span><span class="k">this</span><span class="p">[</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="c1">//其实没必要非要是整型</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">get</span>
@@ -3384,23 +3396,27 @@
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="c1">// 设置 index 指定的值</span>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_7">委托</h3>
-<p>在C#中，委托(Delegate)是一种类型安全的函数指针，它允许将方法作为参数传递给其他方法，所有的委托都派生自<code>System.Delegate</code>类，声明委托的语法如下：
+<p>在C#中，委托(Delegate)是一种类型安全的函数指针，它允许将方法作为参数传递给其他方法，所有的委托都派生自<code>System.Delegate</code>类，声明委托的语法如下：</p>
 <div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">public</span><span class="w"> </span><span class="k">delegate</span><span class="w"> </span><span class="o">&lt;</span><span class="k">return</span><span class="w"> </span><span class="n">type</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="k">delegate</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">parameter</span><span class="w"> </span><span class="n">list</span><span class="o">&gt;</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <p>相同类型的委托可以叠加，这叫做委托的多播，调用多播的委托相当于依次调用了多个函数</p>
-<p>C# 提供了几种常见的委托类型：
-* <code>Action</code>代表不返回值的方法
-* <code>Func</code>代表返回值的方法
-* <code>Predicate</code>代表返回布尔值的方法</p>
+<p>C# 提供了几种常见的委托类型：</p>
+<ul>
+<li><code>Action</code>代表不返回值的方法</li>
+<li><code>Func</code>代表返回值的方法</li>
+<li><code>Predicate</code>代表返回布尔值的方法</li>
+</ul>
 <h3 id="_8">事件</h3>
 <p>C#事件是一种特殊的委托，用于将特定事件通知发送给订阅者，即允许将一个对象的状态变化通知其他对象，而不需要知道这些对象的细节，其实这个和JS的事件监听很像</p>
 <p>事件在类中声明且生成，且通过使用同一个类或其他类中的委托与事件处理程序关联，包含事件的类用于发布事件，被称作发布器，接受事件的类被称作订阅器</p>
 <h3 id="_9">泛型</h3>
-<p>集合还是那些，写法也是类似的，都在<code>System.Collection</code>中
-  * 动态数组 ArrayList
-  * 哈希表 Hashtable</p>
+<p>集合还是那些，写法也是类似的，都在<code>System.Collection</code>中</p>
+<ul>
+<li>动态数组 ArrayList</li>
+<li>哈希表 Hashtable</li>
+</ul>
 <h3 id="_10">匿名方法</h3>
 <ul>
 <li>Lambda表达式：C# 里面这么写<code>(parameters) =&gt; { statement; }</code></li>
@@ -3436,7 +3452,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3446,7 +3462,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

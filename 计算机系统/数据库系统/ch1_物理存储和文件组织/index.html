@@ -3265,7 +3265,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3572,16 +3572,18 @@
 <p>这部分和计算机系统原理课程教授的内容重合。</p>
 </div>
 <h3 id="_3">分类</h3>
-<p>可以根据掉电后数据是否会丢失分为易失性存储和非易失性存储，然后大概的层级是：
-1. primary storage 主存储器
-   1. cache 高速缓存
-   2. main memory 主存
-2. secondary storage 辅助存储器
-   1. flash memory 闪存 SSD
-   2. magnetic disk 磁盘 HDD
-3. tertiary storage 外部存储器
-   1. optical disk 光盘
-   2. magnetic tapes 磁带</p>
+<p>可以根据掉电后数据是否会丢失分为易失性存储和非易失性存储，然后大概的层级是：</p>
+<ol>
+<li>primary storage 主存储器</li>
+<li>cache 高速缓存</li>
+<li>main memory 主存</li>
+<li>secondary storage 辅助存储器</li>
+<li>flash memory 闪存 SSD</li>
+<li>magnetic disk 磁盘 HDD</li>
+<li>tertiary storage 外部存储器</li>
+<li>optical disk 光盘</li>
+<li>magnetic tapes 磁带</li>
+</ol>
 <p>1~3是易失性存储，剩下的是非易失性存储</p>
 <p><img alt="alt text" src="../figures/%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E5%92%8C%E6%96%87%E4%BB%B6%E7%BB%84%E7%BB%87/image2.png" /></p>
 <p>固态硬盘内部使用闪存来存储数据，但提供和磁盘类似的接口，允许以块为单位来存储或检索数据。</p>
@@ -3633,25 +3635,33 @@
 <p>数据库被存储为一系列的文件(可能是由操作系统维护)，每个文件被组织成一系列的record，每个record又被组织成一系列的field。要求不存在比块更大的记录，没有一条记录是包含在多个块中的。</p>
 <h3 id="_10">基本存储方式</h3>
 <h4 id="_11">定长存储</h4>
-<p>每个record的长度是固定的，这样可以像数组一样访问。删除有三种方式：
-1. 依次前移，这个在学C的数组时就知道是开销很大的
-2. 把最后一个移过来
-3. 不移动，维护一个 free list，通常插入比删除更加频繁，所以可以让新插入的记录用上删除的空闲空间。</p>
+<p>每个record的长度是固定的，这样可以像数组一样访问。删除有三种方式：</p>
+<ol>
+<li>依次前移，这个在学C的数组时就知道是开销很大的</li>
+<li>把最后一个移过来</li>
+<li>不移动，维护一个 free list，通常插入比删除更加频繁，所以可以让新插入的记录用上删除的空闲空间。</li>
+</ol>
 <h4 id="_12">不定长存储</h4>
-<p>有多种可能导致不定长：
-1. 一个文件中存了多种类型的记录
-2. record 本身有可变长的类型，比如<code>VARCHAR</code>
-3. record本身允许重复的域，比如数组或者多重集合</p>
+<p>有多种可能导致不定长：</p>
+<ol>
+<li>一个文件中存了多种类型的记录</li>
+<li>record 本身有可变长的类型，比如<code>VARCHAR</code></li>
+<li>record本身允许重复的域，比如数组或者多重集合</li>
+</ol>
 <p>方法是记录不定长属性的<em>偏移</em>和<em>长度</em>，然后在所有定长记录之后存储不定长属性的实际值，空的属性可以用null bitmap表示，下图中前三个属性是不定长的，最后一个属性是定长的。<strong>注意，null bitmap书上认为值为 1 才是代表为空</strong>。</p>
 <p><img alt="alt text" src="../figures/%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E5%92%8C%E6%96%87%E4%BB%B6%E7%BB%84%E7%BB%87/image5.png" /></p>
-<p>上面是一条不定长的记录，然后为了存放不定长的记录，引入了分槽页(slotted-page)结构，每个块开头存放元数据：
-* 记录的数量
-* 自由空间的末尾处
-* 每条记录的位置和大小组成的数组</p>
+<p>上面是一条不定长的记录，然后为了存放不定长的记录，引入了分槽页(slotted-page)结构，每个块开头存放元数据：</p>
+<ul>
+<li>记录的数量</li>
+<li>自由空间的末尾处</li>
+<li>每条记录的位置和大小组成的数组</li>
+</ul>
 <p><img alt="alt text" src="../figures/%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E5%92%8C%E6%96%87%E4%BB%B6%E7%BB%84%E7%BB%87/image1.png" /></p>
-<p>这部分的详细算法在 minisql 的 record manager中有实现：
-1. 插入：在自由空间末尾插入并修改元数据
-2. 删除：在元数据中标记删除，然后在自由空间中移动记录填补空缺，末尾指针也要改</p>
+<p>这部分的详细算法在 minisql 的 record manager中有实现：</p>
+<ol>
+<li>插入：在自由空间末尾插入并修改元数据</li>
+<li>删除：在元数据中标记删除，然后在自由空间中移动记录填补空缺，末尾指针也要改</li>
+</ol>
 <h3 id="_13">优化</h3>
 <h4 id="_14">堆文件</h4>
 <p>record可以被塞在任何有空闲空间的地方，在分配内存后通常就不再移动了，记录是没有顺序的。这样的话如何找到空闲空间就很重要，显然不是去线性搜索：可以用一个 自由空间图(free-space map)记录一个block有多空闲，通常是一个数组，比如用3个bit表示空闲程度0~7，7代表着至少有$\frac{7}{8} $的空间是空闲的。</p>
@@ -3667,12 +3677,14 @@
 <h4 id="_17">划分</h4>
 <p>一张大的表可以被分成多个小的表，能够减少诸如空闲空间管理的开销，比如可以按照年份划分数据，把最近的数据存在SSD，然后往年的数据存在磁盘。</p>
 <h4 id="_18">数据词典存储</h4>
-<p>存储表的元数据（即关于关系的数据），存储在系统目录(system catalog)中，即 minisql 的 catalog manager，必须存储的属性有：
-* 关系的名称
-* 每个关系中属性的名称
-* 属性的域和长度
-* 在数据库上定义的视图名称以及这些视图的定义
-* 完整性约束</p>
+<p>存储表的元数据（即关于关系的数据），存储在系统目录(system catalog)中，即 minisql 的 catalog manager，必须存储的属性有：</p>
+<ul>
+<li>关系的名称</li>
+<li>每个关系中属性的名称</li>
+<li>属性的域和长度</li>
+<li>在数据库上定义的视图名称以及这些视图的定义</li>
+<li>完整性约束</li>
+</ul>
 <p>实际上，这些元信息组成了一个微型的数据库，可以存储为数据库的关系，但是注意到<code>index_attributes</code>这种会被表示为一个字符串，虽然违反了第一范式，但是这样存储数据会更有效。</p>
 <p><img alt="alt text" src="../figures/%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E5%92%8C%E6%96%87%E4%BB%B6%E7%BB%84%E7%BB%87/image8.png" /></p>
 <p>只要数据库需要从关系中检索数据，它就必须通过<code>relation_metadata</code>关系来查找关系的位置和存储组织，然后使用该信息去获取记录，但是元信息本身的存储组织和位置必须被存放在其他地方（比如一个固定的位置），因为元数据会被频繁访问，所以实际上会被放在内存中。</p>
@@ -3682,9 +3694,11 @@
 <p>block(page) 始终是磁盘数据访问的最小单位，buffer为了与磁盘适配，最小单位也是block(page)，buffer相当于是内存中的磁盘block，用于减少磁盘访问次数。但是由于内存有限，所以buffer在必要时需要替换，替换的策略有LRU等。</p>
 <h3 id="_21">缓存管理</h3>
 <p>从磁盘访问数据远比从内存访问数据慢，所以数据库系统需要在内存保留尽可能多的块，因此需要对内存中存储块的区域进行管理，即 buffer manager。</p>
-<p>buffer manager 返回的始终是内存中对应块的地址，如果内存中没有，那么需要从磁盘读取，但是如果内存缓冲区满了，那么需要根据替换策略选择一个块替换，替换的块如果为脏页（即被修改过）会被写回到磁盘。涉及的操作有：
-1. pin：在读写之前完成，防止block被替换， pin 会有一个计数（如果是读的话）
-2. unpin：在读写之后完成，允许block被替换，pin 计数为0则可以替换</p>
+<p>buffer manager 返回的始终是内存中对应块的地址，如果内存中没有，那么需要从磁盘读取，但是如果内存缓冲区满了，那么需要根据替换策略选择一个块替换，替换的块如果为脏页（即被修改过）会被写回到磁盘。涉及的操作有：</p>
+<ol>
+<li>pin：在读写之前完成，防止block被替换， pin 会有一个计数（如果是读的话）</li>
+<li>unpin：在读写之后完成，允许block被替换，pin 计数为0则可以替换</li>
+</ol>
 <p>并发访问中也会涉及闩(latch)，用法规则和lock几乎一样，这里省略。大多数恢复系统要求当块上在进行更新时，不能写回磁盘，为了满足这个要求，写回磁盘的进程需要共享锁。</p>
 <h3 id="lru">LRU</h3>
 <p>LRU(Least Recently Used)，把最近最少访问的块替换掉，实现为维护一个queue，LRU在某些情况下会很差，比如在join时循环扫描。与之相对的还有MRU(Most Recently Used)。</p>
@@ -3713,7 +3727,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3723,7 +3737,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

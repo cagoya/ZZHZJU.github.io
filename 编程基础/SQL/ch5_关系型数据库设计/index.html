@@ -3229,7 +3229,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3518,7 +3518,7 @@
 <p>函数依赖其实是键的泛化：</p>
 <ul>
 <li>K is a super-key for relation schema R if and only if $K\rightarrow R $</li>
-<li>K is a candidate-key if and only if </li>
+<li>K is a candidate-key if and only if</li>
 <li>$K\rightarrow R $</li>
 <li>no $\alpha\in K <span class="arithmatex">\(，\)</span>\alpha\rightarrow R $  </li>
 </ul>
@@ -3528,21 +3528,27 @@
 <h3 id="_5">函数闭包</h3>
 <p>函数闭包(closure)，当给出一组函数依赖$F <span class="arithmatex">\(时，有一些依赖关系是隐含在里面的，所有显式和隐式的函数依赖集合就被称作\)</span>F <span class="arithmatex">\(的闭包，记作\)</span>F^+ $</p>
 <h3 id="armstrongs-axioms">Armstrong’s Axioms</h3>
-<p>有三条基本公理：
-1. 自反律，其实就是平凡的函数依赖，if$\beta\subseteq \alpha <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta $
-2. 增补律，可以同时增加同一个元组，if$\alpha\rightarrow \beta <span class="arithmatex">\(,then\)</span>\gamma\alpha\rightarrow \gamma\beta $
-3. 传递律，if$\alpha\rightarrow \beta , \beta\rightarrow \gamma , <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \gamma $</p>
-<p>还有三个推论：
-1. 合并律，if$\alpha\rightarrow \beta,\alpha\rightarrow \gamma <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta\gamma $
-2. 分解律，if$\alpha\rightarrow \beta\gamma <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta,\alpha\rightarrow \gamma $
-3. 伪传递律，if$\alpha\rightarrow\beta,\gamma\beta\rightarrow \delta <span class="arithmatex">\(,then\)</span>\alpha\gamma\rightarrow \delta $</p>
+<p>有三条基本公理：</p>
+<ol>
+<li>自反律，其实就是平凡的函数依赖，if$\beta\subseteq \alpha <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta $</li>
+<li>增补律，可以同时增加同一个元组，if$\alpha\rightarrow \beta <span class="arithmatex">\(,then\)</span>\gamma\alpha\rightarrow \gamma\beta $</li>
+<li>传递律，if$\alpha\rightarrow \beta , \beta\rightarrow \gamma , <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \gamma $</li>
+</ol>
+<p>还有三个推论：</p>
+<ol>
+<li>合并律，if$\alpha\rightarrow \beta,\alpha\rightarrow \gamma <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta\gamma $</li>
+<li>分解律，if$\alpha\rightarrow \beta\gamma <span class="arithmatex">\(,then\)</span>\alpha\rightarrow \beta,\alpha\rightarrow \gamma $</li>
+<li>伪传递律，if$\alpha\rightarrow\beta,\gamma\beta\rightarrow \delta <span class="arithmatex">\(,then\)</span>\alpha\gamma\rightarrow \delta $</li>
+</ol>
 <h4 id="_6">算法</h4>
 <p>先使用自反律和增补律，再看有没有可以用传递律的，重复这个过程直到没有新的函数依赖。对于n个元素，总共有$2^n\times 2^n $种可能的函数依赖，这个数字非常大，所以这个算法实际上几乎不可能执行。</p>
 <h4 id="_7">属性集的闭包</h4>
 <p>刚才是函数依赖的闭包，这里定义一个属性$\alpha <span class="arithmatex">\(的闭包，是可以从给定的F推出的所有\)</span>\alpha $单独在箭头左侧的函数依赖的集合</p>
-<p>如何判断$\alpha <span class="arithmatex">\(是不是超键：
-1. 先找函数依赖的闭包，然后看\)</span>\alpha <span class="arithmatex">\(的决定的项是否能构成整个关系集
-2. 直接找\)</span>\alpha <span class="arithmatex">\(的属性集闭包，在F下由\)</span>\alpha <span class="arithmatex">\(直接或者间接决定的属性集称为\)</span>\alpha^+ $</p>
+<p>如何判断$\alpha $是不是超键：</p>
+<ol>
+<li>先找函数依赖的闭包，然后看$\alpha $的决定的项是否能构成整个关系集</li>
+<li>直接找$\alpha <span class="arithmatex">\(的属性集闭包，在F下由\)</span>\alpha <span class="arithmatex">\(直接或者间接决定的属性集称为\)</span>\alpha^+ $</li>
+</ol>
 <h4 id="_8">算法</h4>
 <p>先把$\alpha <span class="arithmatex">\(纳入结果集result，然后对于F中的关系，如果\)</span>\beta\rightarrow \gamma <span class="arithmatex">\(，并且\)</span>\beta <span class="arithmatex">\(在结果集中，则将\)</span>\gamma $纳入结果集，重复这个过程直到结果集没有变化。</p>
 <h4 id="_9">属性集闭包的用处</h4>
@@ -3553,10 +3559,12 @@
 </ol>
 <h4 id="_10">正则覆盖</h4>
 <p>如果FD太复杂了，那么检验的开销是很大的，所以我们要尽量减小FD，我们把能够覆盖FD的最小集合叫做正则覆盖，没有任何多余的函数依赖，并且箭头左侧都是unique的</p>
-<p>我们需要删除多余属性：
-1. 可以被其他依赖隐含的依赖，比如通过传递律
-2. 左侧是多余的，比如$\alpha\beta\rightarrow \gamma,\alpha\rightarrow \gamma $
-3. 右侧是多余的</p>
+<p>我们需要删除多余属性：</p>
+<ol>
+<li>可以被其他依赖隐含的依赖，比如通过传递律</li>
+<li>左侧是多余的，比如$\alpha\beta\rightarrow \gamma,\alpha\rightarrow \gamma $</li>
+<li>右侧是多余的</li>
+</ol>
 <h4 id="_11">实际算法</h4>
 <p>考虑$\alpha \rightarrow \beta $</p>
 <p>如果左边有多余的属性：
@@ -3620,7 +3628,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3630,7 +3638,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

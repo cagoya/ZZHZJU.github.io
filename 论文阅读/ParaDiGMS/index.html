@@ -3128,7 +3128,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -3311,10 +3311,12 @@
 <div class="arithmatex">\[y(x) - y(x_0) = \int_{x_0}^{x} f(x,y)dx \]</div>
 <p>然后把初值带进去移项可得</p>
 <div class="arithmatex">\[y(x) = f(x) = y_0 + \int_{x_0}^{x} f(x,y)dx \]</div>
-<p>迭代的步骤如下：
-1. 确定迭代的初值，可以取常函数$y_0(x)=y_0 $
-2. 然后代入迭代公式$y_{n+1}(x) = y_0 + \int_{x_0}^{x} f(x,y_n(x))dx $
-3. 重复迭代直至收敛</p>
+<p>迭代的步骤如下：</p>
+<ol>
+<li>确定迭代的初值，可以取常函数$y_0(x)=y_0 $</li>
+<li>然后代入迭代公式$y_{n+1}(x) = y_0 + \int_{x_0}^{x} f(x,y_n(x))dx $</li>
+<li>重复迭代直至收敛</li>
+</ol>
 <p>可以证明一定条件下，Picard 迭代法是收敛于$y(x) <span class="arithmatex">\(真实解的，但是这里求解定积分（或者说是不定积分）也要用数值方法求解，最简单的肯定是梯形法则，论文上甚至还要近似一点，直接写成了，这里是要求解从\)</span>0 <span class="arithmatex">\(到\)</span>t $的每个位置上的值</p>
 <div class="arithmatex">\[x_t^{k+1}=x_0^k+\frac{1}{T}\Sigma_{i=0}^{t-1}s(x^k_i,\frac{i}{T}) \]</div>
 <p><img alt="" src="../images/%E8%AE%A1%E7%AE%97%E5%9B%BE.png" /></p>
@@ -3330,7 +3332,7 @@
 <p>上面的推导是基于常微分方程的确定性的，不过由于反向 SDE 具有与位置无关的噪声，可以预先对噪声进行采样，并将这些固定噪声吸收到（现在是确定性的）微分方程的漂移中。需要注意的是，由此得到的 ODE 在位置上仍然是 Lipschitz 连续的，在时间上也是连续的，这保证了 Picard 迭代的收敛性。</p>
 <h4 id="_7">结束条件</h4>
 <p>迭代算法都会有结束条件，这里又有一个定理：</p>
-<p>假设上述迭代规则有大于等于 2 的线性收敛率，使用$||x_t^K-x_t^{K-1}||^2\leq \frac{4\epsilon^2\delta_t^2}{T^2} <span class="arithmatex">\(作为结束条件，将会保证与 DDPM 的误差小于\)</span>\epsilon $</p>
+<p>假设上述迭代规则有大于等于 2 的线性收敛率，使用 $||x_t^K-x_t^{K-1}||^2\leq \frac{4\epsilon^2\delta_t^2}{T^2} $ 作为结束条件，将会保证与 DDPM 的误差小于 $\epsilon $</p>
 <p>上面是最坏情况，实际当中还可以调整。</p>
 
 
@@ -3354,7 +3356,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -3364,7 +3366,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     

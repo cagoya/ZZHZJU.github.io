@@ -3784,7 +3784,7 @@
   
   
   <span class="md-ellipsis">
-    Ch2 重构
+    重构
     
   </span>
   
@@ -4613,23 +4613,27 @@
 <li>执行：<code>name.exe</code></li>
 </ul>
 <h3 id="16_1">16位汇编调试</h3>
-<p><code>td name</code>
-* F4 excute to current position
-* F8 step over
-* F9 excute
-* ctrl + g 查看地址内容
-* ctrl + o 回到当前停止位置
-* ctrl + alt + x 退出</p>
+<p><code>td name</code></p>
+<ul>
+<li>F4 excute to current position</li>
+<li>F8 step over</li>
+<li>F9 excute</li>
+<li>ctrl + g 查看地址内容</li>
+<li>ctrl + o 回到当前停止位置</li>
+<li>ctrl + alt + x 退出</li>
+</ul>
 <h2 id="_2">变量</h2>
 <h3 id="_3">变量大小</h3>
-<p>汇编定义变量时是变量名在前，类型在后
-* db==char
-* b==byte
-* dw==short int
-* w==word
-* dd=float
-* d==double word
-* dq==double</p>
+<p>汇编定义变量时是变量名在前，类型在后</p>
+<ul>
+<li>db==char</li>
+<li>b==byte</li>
+<li>dw==short int</li>
+<li>w==word</li>
+<li>dd=float</li>
+<li>d==double word</li>
+<li>dq==double</li>
+</ul>
 <h3 id="_4">寻址方式</h3>
 <p>8086有20位地址总线，可以传送20位地址，达到1MB的寻址能力。8086CPU内部提供两个16位地址，一个称为段地址，一个称为偏移地址。<strong>物理地址=段地址*16+偏移地址</strong></p>
 <h4 id="_5">段地址</h4>
@@ -4645,12 +4649,10 @@
 <li>一条汇编指令只能涉及一个内存变量，令一个必须是寄存器或者常数</li>
 <li>X86是小端地址(small-endian)：即先存放低八位，再存放高八位</li>
 <li>masm是默认16位的，如果要使用32位寄存器，需要使用.386表示接下来要使用32位寄存器，并且要指定use 16来确保使用16位偏移地址</li>
-<li>汇编语言遵从等宽原则，即两个操作数的宽度必须保持一致，但有些时候会发生一些特殊情况，这种情况下需要手动进行强制转换：<ul>
+<li>汇编语言遵从等宽原则，即两个操作数的宽度必须保持一致，但有些时候会发生一些特殊情况，这种情况下需要手动进行强制转换：</li>
 <li>byte ptr 表示宽度为一字节</li>
 <li>word ptr 表示宽度为两字节</li>
 <li>dword ptr 表示宽度为四字节</li>
-</ul>
-</li>
 <li>汇编语言常数是没有宽度的，自然也不可能去改变宽度</li>
 <li>如果一条指令有两个操作数，一定是从右到左</li>
 <li>伪指令仅在代码编写阶段起到辅助作用，代码编译后并不会生成对应的机器码</li>
@@ -4733,10 +4735,10 @@
 <li>32位乘法：被乘数一定是EAX，乘积一定是EDX:EAX</li>
 </ul>
 <h4 id="_20">符号数乘法</h4>
-<p>第二行的第三个操作数必须是常量，这个会溢出
+<p>第二行的第三个操作数必须是常量，这个会溢出</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">imul</span><span class="w"> </span><span class="no">eax</span><span class="p">,</span><span class="w"> </span><span class="no">ebx</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">imul</span><span class="w"> </span><span class="no">eax</span><span class="p">,</span><span class="w"> </span><span class="no">ebx</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="_21">符号数除法</h4>
 <ul>
 <li>8位除法：ax/divisor=AL...AH</li>
@@ -4745,11 +4747,11 @@
 </ul>
 <h4 id="_22">符号数除法</h4>
 <h4 id="0">除以0</h4>
-<p>操作系统会拦截，但是可以自定义输出，只要去修改int 00h 中断函数指针。操作系统会先压栈，保存当前状态。可以通过特殊的技巧去修改返回地址，其实计原里面讲的修改CS，但是要注意x86指令是不等长的，这里div指令刚好是2byte，直接跳过错误指令到next段。
+<p>操作系统会拦截，但是可以自定义输出，只要去修改int 00h 中断函数指针。操作系统会先压栈，保存当前状态。可以通过特殊的技巧去修改返回地址，其实计原里面讲的修改CS，但是要注意x86指令是不等长的，这里div指令刚好是2byte，直接跳过错误指令到next段。</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">push</span><span class="w"> </span><span class="no">offset</span><span class="w"> </span><span class="no">divid</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">push</span><span class="w"> </span><span class="no">cs</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">pushf</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_23">逻辑运算</h3>
 <p><code>and or not xor shl shr  sal  sar rol ror</code></p>
 <h3 id="_24">栈操作</h3>
@@ -4762,10 +4764,10 @@
 <p>xlat执行前必须让ds:bx指向表，al必须赋值为数组下标</p>
 <h3 id="_27">地址传送指令</h3>
 <h4 id="lea">lea</h4>
-<p>取变量的偏移地址，可以用于计算一些特别的四则运算，比如三个数相加，eax乘以5这种
+<p>取变量的偏移地址，可以用于计算一些特别的四则运算，比如三个数相加，eax乘以5这种</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mov eax, 3
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>lea eax, [eax+eax*4]
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h4 id="les">les</h4>
 <p>取出远指针，高16位段地址给es，低16位给目标寄存器，可以用于取出远指针。一般不用lds，因为ds一般都指向data段。</p>
 <h3 id="_28">标志寄存器传送指令</h3>
@@ -4784,7 +4786,7 @@
 </ol>
 <p>它们是为了有符号除法服务</p>
 <h4 id="_31">零扩充</h4>
-<p>movzx，可以随意指定原寄存器和目标寄存器 </p>
+<p>movzx，可以随意指定原寄存器和目标寄存器</p>
 <h3 id="_32">跳转指令</h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4792,22 +4794,76 @@
 </div>
 <p>跳转指令其实有两套</p>
 <h4 id="_33">跟大小比较有关</h4>
-<p>jx与jxe除了第一个ja都写出来了，其它都只留一个
-|指令|含义|条件|
-|:---:|:---:|:---:|
-|ja|jump if above|CF == 0 \&amp;\&amp; ZF == 0|
-|jae|jump if above or equal|CF == 0|
-|jb|jump if below|CF == 1|
-|je|jump if equal|ZF==1|
-|jg|jump if greater|SF == 0 &amp;&amp; ZF == 0|
-|jge|jump if equal or greater|SF == ZF|</p>
+<p>jx与jxe除了第一个ja都写出来了，其它都只留一个</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">指令</th>
+<th style="text-align: center;">含义</th>
+<th style="text-align: center;">条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">ja</td>
+<td style="text-align: center;">jump if above</td>
+<td style="text-align: center;">CF == 0 \&amp;\&amp; ZF == 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">jae</td>
+<td style="text-align: center;">jump if above or equal</td>
+<td style="text-align: center;">CF == 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">jb</td>
+<td style="text-align: center;">jump if below</td>
+<td style="text-align: center;">CF == 1</td>
+</tr>
+<tr>
+<td style="text-align: center;">je</td>
+<td style="text-align: center;">jump if equal</td>
+<td style="text-align: center;">ZF==1</td>
+</tr>
+<tr>
+<td style="text-align: center;">jg</td>
+<td style="text-align: center;">jump if greater</td>
+<td style="text-align: center;">SF == 0 &amp;&amp; ZF == 0</td>
+</tr>
+<tr>
+<td style="text-align: center;">jge</td>
+<td style="text-align: center;">jump if equal or greater</td>
+<td style="text-align: center;">SF == ZF</td>
+</tr>
+</tbody>
+</table>
 <h4 id="_34">和标志有关</h4>
-<p>其实就是和每个符号位相关，所以只象征性地列两个
-|指令|含义|标志|
-|:---:|:---:|:---:|
-|jc|jump if carry|CF == 1|
-|jz|jump if zero|ZF == 1|
-|jcxz|jump if cx is zero|CX == 0|</p>
+<p>其实就是和每个符号位相关，所以只象征性地列两个</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">指令</th>
+<th style="text-align: center;">含义</th>
+<th style="text-align: center;">标志</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">jc</td>
+<td style="text-align: center;">jump if carry</td>
+<td style="text-align: center;">CF == 1</td>
+</tr>
+<tr>
+<td style="text-align: center;">jz</td>
+<td style="text-align: center;">jump if zero</td>
+<td style="text-align: center;">ZF == 1</td>
+</tr>
+<tr>
+<td style="text-align: center;">jcxz</td>
+<td style="text-align: center;">jump if cx is zero</td>
+<td style="text-align: center;">CX == 0</td>
+</tr>
+</tbody>
+</table>
 <h4 id="_35">无条件跳转</h4>
 <p>指令是<code>jmp</code>，但是分为短跳、近跳、远跳</p>
 <h5 id="jmp-short-dest">jmp short dest</h5>
@@ -4818,12 +4874,14 @@
 <p>远跳可以跳32位，最后4byte是一个远指针，远跳一定是<code>EA</code>开头</p>
 <h3 id="_36">小数版本</h3>
 <h4 id="_37">运算符</h4>
-<p>8086 CPU没有专门的浮点寄存器， Intel 公司后来设计了8087(fpu)增添浮点寄存器。fpu里面有八个寄存器，分别叫st(0),st(1),...,st(7)，为了与数组区分没有使用圆括号，使用了方括号，每个寄存器的宽度均为80位，即long double类型。
-* fadd fsub fmul fdiv
-* fld 把小数类型的变量载入小数寄存器
-* fild 把整数类型转化成小数载入小数寄存器
-* fst 把小数寄存器st(0)保存到变量中
-* fstp 把小数寄存器st(0)保存到变量中并弹出st(0)</p>
+<p>8086 CPU没有专门的浮点寄存器， Intel 公司后来设计了8087(fpu)增添浮点寄存器。fpu里面有八个寄存器，分别叫st(0),st(1),...,st(7)，为了与数组区分没有使用圆括号，使用了方括号，每个寄存器的宽度均为80位，即long double类型。</p>
+<ul>
+<li>fadd fsub fmul fdiv</li>
+<li>fld 把小数类型的变量载入小数寄存器</li>
+<li>fild 把整数类型转化成小数载入小数寄存器</li>
+<li>fst 把小数寄存器st(0)保存到变量中</li>
+<li>fstp 把小数寄存器st(0)保存到变量中并弹出st(0)</li>
+</ul>
 <h4 id="ieee">IEEE浮点数标准</h4>
 <table>
 <thead>
@@ -4854,14 +4912,14 @@
 <ul>
 <li>movsb: 以字节为单位复制字符串，将<code>ds:si</code>的<code>cx</code> bytes 复制到<code>es:di</code>。复制方向取决于<code>df</code>,<code>df=0</code>是正向复制，即从低地址到高地址</li>
 <li>movsw: 以字节为单位复制字符串</li>
-<li>movsd: 以双字为单位复制字符串，对于当前长度不是四的倍数的情况只需要先复制四的倍数个区块再用movsb
+<li>movsd: 以双字为单位复制字符串，对于当前长度不是四的倍数的情况只需要先复制四的倍数个区块再用movsb</li>
+</ul>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>push<span class="w"> </span>ecx
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>rep<span class="w"> </span>movsd
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>pop<span class="w"> </span>ecx
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>and<span class="w"> </span>ecx,<span class="w"> </span><span class="m">3</span>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>rep<span class="w"> </span>movsb
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 <h4 id="_40">字符串比较指令</h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -4876,7 +4934,8 @@
 <ul>
 <li>scasb</li>
 <li>repne scasb</li>
-<li>repe scasb
+<li>repe scasb</li>
+</ul>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>计算字符串的长度
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>mov<span class="w"> </span>ax,<span class="w"> </span>1000h
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>mov<span class="w"> </span>es,<span class="w"> </span>ax
@@ -4887,8 +4946,7 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>repne<span class="w"> </span>scasb
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>not<span class="w"> </span>cx<span class="w"> </span><span class="p">;</span>相当于<span class="w"> </span>FFFF-cx
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>dec<span class="w"> </span>cx<span class="w"> </span><span class="p">;</span>要去掉一个0，不能把<span class="s1">&#39;\0&#39;</span>算进去
-</span></code></pre></div></li>
-</ul>
+</span></code></pre></div>
 <div class="language-shell highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>跳过前导无效字符
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mov<span class="w"> </span>al,<span class="w"> </span><span class="s1">&#39;#&#39;</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>cld
@@ -4903,13 +4961,13 @@
 <h2 id="_44">函数</h2>
 <h3 id="_45">定义</h3>
 <p>可以直接用一个标签定义，也可以用函数名+proc定义(这是一种比较正式的写法)</p>
-<p>call指令会先压栈，call与jmp最大的区别也在此，因为call还需要返回，再跳转，比如假设<code>call f</code>，会进行如下操作
+<p>call指令会先压栈，call与jmp最大的区别也在此，因为call还需要返回，再跳转，比如假设<code>call f</code>，会进行如下操作</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nf">push</span><span class="w"> </span><span class="no">offset</span><span class="w"> </span><span class="no">next</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">jmp</span><span class="w"> </span><span class="no">f</span>
 </span></code></pre></div>
-cpu在返回时进行如下操作，把call下方的指令压入堆栈
+<p>cpu在返回时进行如下操作，把call下方的指令压入堆栈</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">pop</span><span class="w"> </span><span class="no">ip</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_46">参数传递</h3>
 <ol>
 <li>寄存器传递：因为汇编的寄存器相当于C语言的全局变量</li>
@@ -4920,7 +4978,7 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 <p class="admonition-title">Note</p>
 <p>用堆栈传递函数的参数主要有三种规范：
 1. __cdecl:参数从右到左插入堆栈，参数的清理有调用者负责
-2. __pascal:参数从左到右插入堆栈，参数的清理由被调用者负责
+2.__pascal:参数从左到右插入堆栈，参数的清理由被调用者负责
 3. __stdcall:参数从右到左的顺序插入堆栈，参数的清理由被调用者清理</p>
 </div>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nl">f:</span>
@@ -4933,7 +4991,7 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 </span></code></pre></div>
 <h3 id="_47">递归</h3>
 <p>参考MIPS中学的递归，不应该被改变的量一定要压栈。因为x86中sp并不能直接使用，所以其实是压bp。
-寄存器全是全局寄存器
+寄存器全是全局寄存器</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">code</span><span class="w"> </span><span class="no">segment</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">assume</span><span class="w"> </span><span class="no">cs</span><span class="p">:</span><span class="no">code</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">f</span><span class="w"> </span><span class="no">porc</span><span class="w"> </span><span class="no">near</span>
@@ -4959,7 +5017,7 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 </span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">  </span><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span>
 </span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="nf">code</span><span class="w"> </span><span class="no">ends</span>
 </span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="nf">end</span><span class="w"> </span><span class="no">main</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h2 id="_48">显存</h2>
 <h3 id="_49">文本模式</h3>
 <p>计算机启动时，显卡的文本模式(B800:0000)与显卡相应的内存地址映射起来。文本模式只能显示字符，每个字符占两个字节，第一个字节是字符的ASCELL码，第二个字节是字符的颜色与背景颜色，高四位是背景色，第四位是前景色。显存的地址计算公式为<code>偏移地址=(y*80+x)*2</code></p>
@@ -4977,30 +5035,32 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 <h3 id="_54">调试器</h3>
 <p>调试器本身就是一个程序，会用到被调试程序的堆栈段，从而导致堆栈被部分覆盖，这是正常现象。堆栈段初始值不重要，因为始终是先push再pop，不会影响到被调试程序的有效数据</p>
 <h3 id="_55">初始化</h3>
-<p>程序开始时，dos把exe读入内存，然后会对一下寄存器做初始化
-1. ss:sp ss=stk,sp=len(stack)
-2. cs:ip cs=code,ip=offset main
-3. ds=psp segment address
-4. es=psp segment address</p>
+<p>程序开始时，dos把exe读入内存，然后会对一下寄存器做初始化</p>
+<ol>
+<li>ss:sp ss=stk,sp=len(stack)</li>
+<li>cs:ip cs=code,ip=offset main</li>
+<li>ds=psp segment address</li>
+<li>es=psp segment address</li>
+</ol>
 <p>psp 是操作系统分配的100h连续空间，而且一定位于程序段首，里面存放的是一些和当前程序运行有关的进程信息，并没有自动把ds,es赋值成data的段地址，会因为考虑到了程序员主动访问psp的可能</p>
-<p>关于如何计算psp的段地址:
+<p>关于如何计算psp的段地址:</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">ds</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">sub</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span>
 </span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>100h 和 10h 的差距是10h倍，即十进制的16，不是10倍</p>
 </div>
 <h3 id="_56">关于内存</h3>
-<p>DOS系统是单任务的系统，所以一个程序运行时其余都是空闲的，从0000:0000到9000:FFFF的内存都是可用的，但是这之后的内存就会被用于映射硬件，所以常规编程不允许使用
+<p>DOS系统是单任务的系统，所以一个程序运行时其余都是空闲的，从0000:0000到9000:FFFF的内存都是可用的，但是这之后的内存就会被用于映射硬件，所以常规编程不允许使用</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">;显卡地址</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nl">A000:</span><span class="err">0000~</span><span class="nl">A000:</span><span class="nf">FFFF</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nl">B000:</span><span class="err">0000~</span><span class="nl">B000:</span><span class="nf">FFFF</span>
 </span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nl">C000:</span><span class="err">0000~</span><span class="nl">C000:</span><span class="nf">FFFF</span>
 </span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1">;ROM</span>
 </span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nl">D000:</span><span class="err">0000~</span><span class="nl">F000:</span><span class="nf">FFFF</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_57">命令行参数</h3>
 <p>就是命令行 + 参数</p>
 <p>空格是命令行的一部分，但是回车(0Dh)不是，对应C语言里的argc,argv</p>
@@ -5014,7 +5074,7 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 <p>70h及71h端口与coms内部的时钟有关，期中cmos的4、2、0中分别保存了当前的时分秒，并且格式均为BCD码</p>
 <h3 id="_59">端口</h3>
 <p>CPU 不能直接控制I/O设备，它必须向I/O设备发送信号才能把控制信号输出到I/O设别。</p>
-<p>特殊的键盘位是无法通过getchar读取的，这种情况下要使用更底层的指令
+<p>特殊的键盘位是无法通过getchar读取的，这种情况下要使用更底层的指令</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">;高，mos中断调用</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span>
@@ -5024,7 +5084,7 @@ cpu在返回时进行如下操作，把call下方的指令压入堆栈
 </span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nf">int</span><span class="w"> </span><span class="mi">16</span><span class="no">h</span>
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1">;低，端口操作，可以读取各个键的编码</span>
 </span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="nf">in</span><span class="w"> </span><span class="no">al</span><span class="w"> </span><span class="p">,</span><span class="mi">60</span><span class="no">h</span>
-</span></code></pre></div></p>
+</span></code></pre></div>
 <h3 id="_60">中断调用</h3>
 <p>中断调用int n的目标地址是一个32位远指针，这个远指针被称作int n的中断向量并且保存在0000:n*4处
 [0000:0000,0000:03FFh]这个区间被称作中断向量表，中断向量表中一共放了从int 00h到int 0FFh共100h个中断向量</p>
@@ -5062,7 +5122,7 @@ TC中的代码段并不是code segment（ 而是<code>_TEXT</code></p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
@@ -5072,7 +5132,7 @@ TC中的代码段并不是code segment（ 而是<code>_TEXT</code></p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:15:59 UTC">July 2, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 2, 2025 14:43:10 UTC">July 2, 2025</span>
   </span>
 
     
