@@ -1,29 +1,36 @@
 # 关系模型
+
 ## 是什么
+
 !!! note difinition
-    A relation database is a collection of one or more relations, which are based on relational model.A relation is a table with rows and columns. 
+    A relation database is a collection of one or more relations, which are based on relational model.A relation is a table with rows and columns.
 
 说白了，relation就是一张表（集合，所以一般不能重复），关系型数据库是表的集合
 
 这里有两个词需要区分：
+
 * relationship:an association among several entities
 * relation:the mathematical concept, referred to a table
 
 给定一个集合 $D_1,D_2,...,D_n $，一个关系 $r$就是$D_1 x D_2 x ... x D_n$($D_i$上的笛卡尔积)的一个子集。因此关系就是一个n维元组。
 
 ### 属性类型
+
 关系的每项属性都有自己的名称和域，并且属性值必须满足原子性(atomic/indivisible)的。至于什么是原子性，就是不可分，下面是两个反例，它们都不是原子属性：
+
 * 多重属性(multivalued attribute)
 * 复合属性(composite attribute)
 
 `null`是一个特殊的值，它存在于任一属性的域中，它不是`''`也不是`0`，它的存在会引发一些问题
 
 ### 相关概念
+
 可以这么理解，relation schema是变量的类型，relation instance 是值$A_1,A_2,...,A_n$是属性，$R=(A_1,A_2,...,A_n)$就是一个 relation schema,$r(R)$是在$R$上的关系。一个关系的当前值可以被一张表表示，r的一个元素t就是一个元组(tuple)，可以被表的一行表示。
 
 注意元组的顺序是不相关的(irrelevant)，元组可能以任意顺序储存。在一个关系中元组是不能重复的(no duplicated)
 
 ### 键
+
 * 首先，键$K$是关系$R$的属性组合，然后如果$K$可以作为元组的标识（键与元组形成一一映射），那么这个键就是超键(superkey)
 * 如果它还是最小的超键(去除任一属性就不再是超键)，那么它就是候选键(candidate key)，注意候选键可以有多个，但它们的元素个数未必相同
 * 可以人为指定一个候选键为主键(primary key)，用下划线标示
@@ -65,14 +72,17 @@
 **Notation:**$r\times s$，表示$r\times s=\{\{t q\}t\in r and q\in s \} $。如果r和s的属性名称是不相交的，则正常组合就好，但是如果不是，就需要考虑重命名来避免命名冲突
 
 #### 6. 重命名
+
 一是给关系代数运算的结果命名，二是给元素取别名，格式是$\rho_{\times(A_1,A_2,...,A_n)}(E) $，对E及其attributes都重命名
 
 ---
 
 #### 1. 交
+
 参考“并”，**Notation:**:$r\cap s $，表示$r\cap s=\{t|t\in r$ and $t \in s \} $，实际上$r\cap s = r - (r - s) $
 
 #### 2. 自然连接
+
 **Notation:** 这个操作要与"并"区分，"并"是接在下面，然连接是找到同名属性相等的元组，然后连接二个关系中 **同名属性值相等**的元组并消除同名属性
 
 Theta join 可以由用户自定义条件$\theta$
@@ -92,23 +102,31 @@ $$R\div S=\{t|t\in \Pi_{R-S}(r)\cap\forall u\in S(tu\in R) \}$$
 这个式子表示商是先按照列作差，然后商的所有元组与除数的所有元组拼接都能被被除数覆盖
 
 #### 4. 赋值
+
 字面意思，符号是$\leftarrow $
 
 ---
+
 #### 1. 广义投影
+
 就是可以在查的时候就对某些列做一些算数运算，比如某一列的值乘二，或者某一列的值加上另一列的值
 
 #### 2. 聚合函数
+
 求解一系列对象的总体特征，比如总和，平均数，最大值，最小值，总数，符号是$g $，比如$g_{avg(balance)}(account) $
 
 #### 3. 外连接
+
 扩展自然连接，避免损失信息，比如左连接，就是保证符号左侧的表的数据完整，如果在右侧的表找不到对应的信息则用`null`填充
 
 #### null
+
 null表示未知或者不存在，这里的处理规则就按照SQL：
+
 * null的任何算数运算都是null
 * 聚合函数会忽略null
 * 比较运算会返回unknow，除非无论null是真是假式子的结果都是确定的
 
 #### 数据库的调整
+
 删除就用减法，插入就用并，更新用广义投影

@@ -83,7 +83,6 @@
 </body>
 </html>
 
-
 ---
 
 ## 教育经历
@@ -218,13 +217,13 @@
 
 <center>
   <img class="img1" src="https://s1.imagehub.cc/images/2025/01/21/5912ddca822c245b1c389246875cc6e4.jpg" style="width: 250px; height: auto;">
-    <div style="color:orange; 
+    <div style="color:orange;
     color: #999;
     padding: 2px;">我的Wechat，不过是收款码</div>
 </center>
 
-
 ## 须知
+
 如果你在浏览博客的过程中发现了任何问题，欢迎评论区留言，尤其是关于某些课程的。如果你有其他事情想要咨询，可以通过下方按钮使用邮件联系我。
 
 [Send Email :fontawesome-solid-paper-plane:](mailto:<wangkewen821@gmail.com>){.md-button}  

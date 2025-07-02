@@ -1,10 +1,15 @@
 # JDBC
+
 ## 简介
+
 Java为数据库定义了一套标准访问接口：`JDBC(Java Database Conectivity)`,JDBC接口是一套class文件，由SUN公司负责制定JDBC规范，存放在`java.sql`里面，但是这只是接口，是不能实例化的，还需要导入具体数据库的jar包。
 
 ## 流程
+
 ### 导入JDBC驱动
+
 这里以连接MySQL为例，首先需要再项目中引入MySQL的数据驱动（我们把某个数据库实现了JDBC接口的jar包称为JDBC驱动），这个信息可以在Maven官网找到。这里设置为`runtime`的原因是编译Java程序并不需要这个包，只有在运行时才需要用到。
+
 ```xml
 <dependency>
     <groupId>mysql</groupId>
@@ -23,7 +28,9 @@ Class.forName("com.mysql.cj.jdbc.Driver");
 ```
 
 ### 建立数据库连接
+
 Connection代表一个JDBC连接，它相当于Java程序到数据库的连接（通常是TCP连接）。打开一个Connection时，需要准备URL、用户名和口令，才能成功连接到数据库。用完之后一定要关闭连接，因为连接数据库的开销并不小。
+
 ```java
 String url = "jdbc:mysql://localhost:3306/mydatabase";
 String username = "root";
@@ -32,7 +39,9 @@ Connection connection = DriverManager.getConnection(url, username, password);
 ```
 
 ### 创建Statement对象并执行语句
+
 JDBC提供了statement对象用于语句执行，statement对象有executeQuery方法用于SQL语句执行，返回结果保存在ResultSet对象中
+
 ```java
 Statement statement = connection.createStatement();
 ResultSet resultSet = statement.executeQuery("SELECT * FROM mytable");
@@ -51,7 +60,9 @@ while (resultSet.next()) {
 ```
 
 ### 关闭资源
+
 JDBC连接是一种昂贵的资源，所以使用后要及时释放
+
 ```java
 resultSet.close();
 statement.close();

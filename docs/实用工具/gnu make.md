@@ -1,21 +1,28 @@
 # makefile
+
 !!!absteact
     gnumake更多是针对x unix的平台，Windows下感觉就算非要弄也很麻烦
+
 ## 规则
+
 ``` makefile
 target ... : prerequisites
     recipe
     ...
     ...
 ```
+
 target 可以是一个目标文件，也可以是一个可执行文件，还可以是一个标签。
 prerequisites 生成该target所依赖的文件和/或 target
 recipe 该target要执行的命令（任意的shell命令）
 
 省流：如果prerequisites中有一个以上文件比target文件要新的话，recipe所定义的命令就会被执行。
+
 ## 写法
+
 因为如果每一个文件都去写名称和操作的话，在大型程序中makefile文件会变得无比冗长，但是不用担心，makefile提供了许多简化的方法。
 一个示例：
+
 ``` makefile
 # 指定使用的C编译器为gcc
 CC = gcc

@@ -61,7 +61,7 @@
 
 数据库一般有四种隔离级别：
 
-- 可串行 serializable：默认
-- 可重复读 repeatable read：只有提交的记录会被读，一个事物重复读同一条记录必须返回相同的结果。
-- 读已提交 read committed：只读已提交的记录，但是连续的读结果可以不一样。
-- 读未提交 read uncommitted：未提交的数据也可以读。
+* 可串行 serializable：默认
+* 可重复读 repeatable read：只有提交的记录会被读，一个事物重复读同一条记录必须返回相同的结果。
+* 读已提交 read committed：只读已提交的记录，但是连续的读结果可以不一样。
+* 读未提交 read uncommitted：未提交的数据也可以读。

@@ -1,14 +1,23 @@
 # CMake
+
 ## Introduction
+
 CMake 是开源、跨平台构建工具，可以让我们编写简单的配置文件去生成本地的Makefile,**这个配置文件是独立于平台和编译器的**，这样就不用亲自去编写Makefile了。
+
 ## 环境搭建
+
 非常简单，直接在Linux下下载就行
+
 ``` bash
 sudo apt install cmake
 ```
+
 Windows下也有，可以下载GUI，命令行环境变量需要自己导入
+
 ## 简单入门
+
 下面是一个示例：
+
 ``` CMake
 # CMake最低版本要求
 cmake_minimum_required(VERSION 3.10)
