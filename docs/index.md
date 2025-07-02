@@ -87,18 +87,17 @@ document.getElementById('box1').innerHTML = timingTime()
 
     ---
 
-    - [x] ZJU课程：更新大二上课程经验总结
-    - [ ] 编程语言/Python
-    - [ ] 前端开发基础
+    - [ ] ZJU课程：更新大二下课程经验总结
+    - [ ] 扩散模型论文阅读(持续更新)
 
     
 -   :simple-materialformkdocs:{ .lg .middle } __个人学习计划__
 
     ---
 
-    - [ ] [CS 224N](https://web.stanford.edu/class/cs224n/)
-    - [ ] [CMU 15-445: Database Systems](https://15445.courses.cs.cmu.edu/spring2023/schedule.html)
-    - [ ] [CS 142](https://web.stanford.edu/class/cs224n/)
+    - [ ] 计算机网络
+    - [ ] 操作系统
+    - [ ] 深度学习
 
 -   :material-format-font:{ .lg .middle } __好用的网站__
 
