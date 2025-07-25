@@ -1,0 +1,275 @@
+# 进阶语法
+
+## 数据类型
+
+### 自定义类型
+
+除了SQL给定的基础类型，SQL也支持创建用户自定义的类型，下面这个例子有点像`typedef`
+
+``` SQL
+CREATE TYPE dollar as numeric(12,2);
+```
+
+也可以自定义作用域，domain相比type可以有约束还可以有默认值，domain不是强类型的，只要底层类型兼容就可以相互赋值
+
+```SQL
+CREATE DOMAIN DOLLARS AS numerric(12,2) NOT NULL
+```
+
+### 大数据类型
+
+图片、音频等大数据被储存为 `larage object`:
+
+* blog:binary larage object:即一大堆未经翻译的二进制数据
+* clog:character larage object:即大量字符数据的集合
+
+当查询大数据类型时是返回指针
+
+## 完整性约束
+
+### 在一条关系上的限制
+
+* not null 不能为空
+* primary key 主键约束
+* foreign key 外键约束
+* unique 唯一性约束
+* check(P) 检查是否满足P
+
+### 参照完整性约束
+
+`FOREIGN KEY` 约束用于预防破坏表之间连接的行为，也能防止非法数据插入外键列，因为它必须是它指向的那个表中对应列的值之一。写成数学表达式大概是：${\Pi }_{\alpha }\left( {r}_{2}\right)  \subseteq  {\Pi }_{K}\left( {r}_{1}\right) \;\alpha$ in ${r}_{2}$ is FK
+
+对于插入来说，插入$r_2$的值的外键值必须在$r_1$的主键值域内；删除则更复杂，如果删除$r_1$中的数据然后被删除元素的主键在$r_2$的外键值域内，那么有两种可能，第一种是报错然后终止删除回滚操作，第二种是引发级联删除导致$r_2$中相应数据也被删除；更新的情况和插入差不多。
+
+外键可以在定义语句最后声明
+
+```sql
+foreign key(dept_name) references department
+```
+
+可以指定有哪些级联操作，形如
+
+```sql
+foreign key(dept_name)references department 
+                                [on delete cascade]
+                                [on update cascade]
+```
+
+如果一些列外键形成了依赖链，如果在一端操作就可能会引起整条链的变动，但是如果发生了 constraint violation即无法通过多级操作修复，系统会回滚事务
+
+注意也可以将约束指定为可延迟的(deferrable)，默认情况下立即对其进行检查，但也可以根据需要进行检查。对于声明为可推迟的约束，指定约束的检查将推迟到该事务结束时进行。**也就是说：允许中间步骤违反参照完整性，但条件是后面的步骤必须在事务结束前消除违反行为。**，否则会有一些语句难以完成，比如插入两条数据，它们的外键分别指向对方。
+
+删除可以是把外键置为`on delete set null`，也可以是`on delete set default`。null确实能通过外键约束的检查，但是还是推荐通过设置not null来避免这种行为。
+
+## 断言
+
+断言(Assertion)是一个谓词，表达了我们希望数据库始终满足的条件。一条断言在数据库里面有如下形式：
+
+```sql
+-- 这个很多系统也不支持
+CREATE ASSERTION<assertion_name>
+CHECK <prediate>
+```
+
+当断言被写下后，**每次更新**数据库都会触发检查，如果满足断言，那么没问题，但如果不满足则会报错。断言有可能会带来巨大开销，因为每次更新都要检查，所以要慎重使用。
+
+```sql
+CREATE ASSERTION credits_earned_constraint check
+    (not exists(select ID
+                FROM student
+                WHERE tot_cred <>(select sum(credits)
+                FROM takes natural join course
+                WHERE student.ID=takes.ID
+                    and grade is not null and grade <> 'F')))
+```
+
+## 触发器
+
+### row level trigger
+
+触发器是系统自动执行的语句，作为修改数据库的副作用。使用触发器必须要明确触发条件和行为。触发器的事件可以是插入、删除和更新，更新的触发器可以限制到具体的属性。
+
+```sql
+CREATE TRIGGER 触发器名
+{ BEFORE | AFTER } { INSERT | UPDATE | DELETE }
+ON 表名
+FOR EACH ROW
+BEGIN
+    -- 触发器逻辑
+    SQL语句;
+END;
+```
+
+比如创建针对插入语句触发器
+
+```sql
+CREATE trigger timeslot_check1 after INSERT on section
+        -- 把新插入的行记作nrow
+        referencing new row as nrow
+        --遍历
+        for each row
+        WHEN(nrow.time_slot_id not in(
+            select time_slot_id
+            from time_slot_id
+        ))
+
+        BEGIN
+            rollback
+        END
+```
+
+或者是创建针对删除语句的触发器
+
+```SQL
+CREATE trigger timeslot_check2 after delete on time_slot
+        referencing old row as orow
+        for each row
+        when(orow.time_slot_id not in(
+            select time_slot_id
+            from time_slot
+            and orow.time_slot_id in(
+                select time_slot_id
+                from section
+            )
+        ))
+
+    BEGIN
+        rollback
+    END
+```
+
+### satatement level trigger
+
+statement level trigger 在 SQL 语句执行时触发，不是针对每一行数据的变化,适用于需要在语句执行前后进行操作的场景，如日志记录、权限检查等,由于只触发一次，性能通常优于行级触发器，尤其在处理大量数据时。在 SQL 中，通过 `FOR EACH STATEMENT` 指定为语句级触发器。
+
+### 优缺点
+
+以前曾经大量使用 trigger 因为它可以维护总数据，并通过记录对特殊关系的更改来复制数据库，并有一个单独的进程将更改应用到副本中，但如今的数据库提供了相应的内置功能来实现这些操作，应该优先选用内置功能。
+
+## 鉴权
+
+鉴权和授权机制保证了特定用户只有资格访问特定的资源
+
+### 视图层面
+
+创建视图来隐藏一些信息，这个过程不需要验证资源权限因为并没有创建真实的关系，查询时对于视图的查询会被转化为对于真实关系的查询，所以鉴权应该在转化前完成，不可能通过创建视图查出了本来没有权限看到的东西。
+
+视图是针对列的，针对行的管理DBMS并不会提供，需要在应用层实现。
+
+### 权限授予
+
+从一个用户到另一个用户的权限传递可以用 grapgh 表示，图的nodes代表用户，根节点是数据库的管理员，拥有所有的权限，这是个有向图，箭头方向代表权限赋予方向，所有的边都必须是从根节点开始的路径的一部分，
+
+此外，必须要避免不包含根节点的环，因为不包含DBA的环是没有任何意义的，几个都没有任何权限的人相互授予权限也是有点幽默（
+
+![alt text](images\graph.png)
+
+如果一个子节点的所有父节点都没权限了，子节点的权限也自然要失去
+
+### 安全规范
+
+可以用`grant`语句授权，形式如下
+
+```sql
+GRANT <privilege list> ON <relation name on view name> TO <user list>
+```
+
+#### SQL 中的权限
+
+* select 允许读
+* insert 允许插入
+* update 允许更新
+* delete 允许删除
+* references 允许定义外键
+* all privileges 所有权限
+
+`with grant option`选项允许授予用户给其他用户授权的权限，默认是没有的
+
+#### 角色
+
+可以把具有某些权限的人全部定义为同一种角色，role可以被赋值也可以赋给别的role
+
+### 收回权限
+
+用`revoke`语句撤销权限，撤销权限也有可能是多级的，但我们可以声明限制`restrict`来避免多级撤销
+
+```sql
+REVOKE <privilege list> ON <relation name or view name> FROM <user list> [restict | cascade]
+```
+
+### 缺陷
+
+SQL 不允许 tuple 级别的鉴权，比如我们不能通过`grant`使每位同学都只能看到自己的成绩。在实际web开发中，往往鉴权是在应用层实现。
+
+## 审计跟踪
+
+审计跟踪是对数据库的所有更改（插入/删除/更新）的日志，以及执行更改的用户和时间等信息。被用于跟踪错误和失败的更新，可以通过触发器实现，但是大部分数据库都有直接支持。
+
+```sql
+AUDIT <st-opt> [ BY <users> ] [ BY SESSION | ACCESS ] 
+[ WHENEVER SUCCESSFUL| WHENEVER NOT SUCCESSFUL ]
+```
+
+* `BY <users>` 缺省对所有用户审计
+* `BY SESSION` 相同类型的审计仅记一次
+* `<st-opt>` table,view,role,index
+* 取消审计 `NOAUDIT`，其它与`AUDIT`相同
+
+## 嵌入式 SQL
+
+SQL并不是编程语言因为它图灵不完备,嵌入式SQL（Embedded SQL）是一种将SQL语句直接写入C语言等编程语言源代码中的方法。借此方法，可使得应用程式能够存取以及处理资料。在这一方法中，将SQL文嵌入的目标源码的语言称为宿主语言，但其实这种抽象的东西如今根本不会使用。
+
+使用`EXEC SQL`语句来标明内嵌式`SQL`，这个是因编程语言而异的
+
+```SQL
+EXEC SQL <embedded SQL statement > END_EXEC
+```
+
+### 单行查询
+
+```c
+EXEC SQL BEGIN DECLARE SECTION;
+//定义变量储存结果
+char V_an[20], bn[20];
+float  bal;
+EXEC SQL END DECLARE SECTION;
+scanf(“%s”, V_an); //读入账号,然后据此在下面的语句获得bn,bal的值
+EXEC SQL SELECT branch_name, balance INTO :bn, :bal FROM account
+WHERE account_number= :V_an;
+END_EXEC
+printf(“%s,%s,%s”, V_an, bn, bal);
+```
+
+### 多行查询
+
+需要声明`cusor`，相当于一个指针，指向当前查询结果所在的tuple(类似于JDBC ResultSet)，每次`FETCH`结束会把状态储存在`SQLCA`中，如果状态是`02000`就代表读取结束
+
+## API
+
+### ODBC
+
+#### 简介
+
+ODBC（Open Database Connectivity）是一种用于访问数据库的标准接口，允许应用程序通过SQL语句与不同的数据库管理系统（DBMS）进行通信。无论底层数据库是什么，ODBC都提供了一种统一的方式来访问数据。
+
+![alt text](images\ODBC.png)
+
+#### 操作流程
+
+1. 分配 SQL 环境和 database connection handle
+2. 使用`SQLConnect()`连接数据库
+3. 配置句柄：
+   1. 分配环境句柄
+   2. 分配连接句柄
+   3. 用已分配的连接句柄连接数据源
+   4. 分配语句句柄
+4. 执行SQL语句
+5. 获取查询结果
+6. 释放语句句柄
+7. 断开数据源连接
+8. 释放连接句柄
+9. 释放环境句柄
+
+### JDBC
+
+JDBC（Java Database Connectivity）是Java语言中用于连接和操作关系型数据库的标准API。它允许Java应用程序通过SQL语句与各种数据库进行交互。JDBC提供了一种与数据库无关的方式来访问数据，使得开发者可以在不同的数据库系统之间切换而不需要修改大量的代码。详见 [Java/JDBC]()

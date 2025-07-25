@@ -1,0 +1,389 @@
+# SQL 语法
+
+!!!abstract
+ ZJU考试会考复杂的SQL语句，但事实上在开发中并不会写特别复杂的SQL语句，因为SQL天生不擅长处理复杂逻辑，逻辑的处理大部分应该由后端代码完成
+
+SQL虽然有统一的标准，但是各家公司产品的语法并不完全统一，部分是因为不同的数据库公司要体现自己产品的特点。SQL语句可以分为DDL,DML和DCL三类。这篇文章里面是`mysql`和`sql server`语法都有，具体会有说明。
+
+## 语法及分类
+
+### 通用规则
+
+* 单行或者多行书写，以分号结尾
+* MySQL的语句不区分大小写，关键字建议使用大写
+* 注释：
+  * 单行注释：`--`或者`#`(MySQL特有)
+  * 多行注释：`/* */`
+
+### DDL
+
+#### 创建库
+
+新建一个数据库，但是如果有图形化界面（如SSMS）可能就无需这么做
+
+``` sql
+CREATE DATABASE 数据库名;
+```
+
+如果是MySQL，还需要使用`USE 数据库名`选定当前使用的数据库，MySQL有`SHOW DABASE`语法输出当前所有数据库的名称，但是在SQL Server里面就得从系统表里面查
+
+#### 创建表
+
+新建一张表
+
+```sql
+CREATE TABLE 表名(
+    变量名 变量类型
+    一些限制（可选）
+);
+```
+
+比如我新建一张图书的表，主键是书号，库存必须非负
+
+```sql
+CREATE TABLE book(
+ bno   char(8) PRIMARY KEY,
+ category  char(10),
+ title   varchar(40) not null,
+ press  varchar(30),
+ year  int,
+ author  varchar(20),
+ price  decimal(7,2),
+ total  int,
+ stock  int 
+    -- 主键也可以写在最后
+    -- PRIMARY KEY(bno)
+    CHECK (stock >= 0)
+);
+```
+
+常见的类型有：
+
+* `char(n)`:**固定长度**为n的字符串，输入数据可以长度不足，虽然会浪费空间，但是如果超长应该会被阻止输入，至少SQL Server会直接报错
+* `varchar(n):`**最长**为n的字符串，会根据字符串实际长度调整存储空间大小
+* `int`:整型，也许还会有`smallint`
+* `float(n)`:浮点型，至少有n位小数
+* `numeric(m,n)`:m位精度，n位小数
+* `date`:日期，在`sql sever`里面是`datetime`，格式为`2025-02-26`
+* `time`:时间，格式为`13:14:15`
+
+SQL 提供了用于类型转换计算的函数，但是这个不是很统一，列举一些基本都有的，其实基本不会在SQL里面算这些东西：
+
+* `Abs`:绝对值
+* `exp`:指数
+* `round`:四舍五入
+* `sin`
+* `cos`
+
+#### 删除和修改
+
+首先是删除表，一般来说可能会需要管理员权限
+
+``` sql
+DROP TABLE 表名；
+```
+
+其次可以给表增加列，新增的列默认值是`null`，这个语法一般不会使用，因为应该在定义时就设计好表需要哪些元素
+
+```sql
+ALTER TABLE 表名 ADD A D;
+ALTER TABLE 表名 ADD （A1 D1,A2 D2,...,An Dn）;
+```
+
+也可以删除列，这个很多数据库都不支持
+
+```sql
+ALTER TABLE 表名 DROP A;
+```
+
+此外还可以调整
+
+```sql
+ALTER TABLE 表名 MODIFY (A1 D1,A2 not null);
+```
+
+#### 创建索引
+
+索引会优化查询速度，如果你要经常用某个键查询，那么最好给这个键创建一个索引，不过其实DBMS大概率会自动给主键创建索引
+
+```sql
+CREATE INDEX 索引名 ON 表名 键（属性表）;
+--还可以指定为 UNIQUE 来声明候选键
+DROP INDEX 索引名 --可以用来删除索引
+```
+
+### 查询语句
+
+SQL 里面最复杂的就是查询，有非常多相关的语法和技巧，考试也主要是考这个。
+
+#### 基础用法
+
+用于从数据库中选取数据，可以指定多个字段，不指定则会选择所有字段，也许可以一次性选定多张表，表示从这些表的然连接中选择，但其实大部分时候都会显式写`join`
+
+``` sql
+SELECT column1, column2, ... FROM table_name;
+```
+
+或者，其中*是通配符，表示选择表中的所有列
+
+``` sql
+SELECT * FROM table_name;
+```
+
+!!!note
+ 有个冷知识，`SELECT 1`并非毫无意义，它常用于测试数据库连接；另外，SQL不允许在名称中有`-`，此外SQL中的名称是大小写不敏感的，一般关键字大写，其余小写。
+
+和关系代数不同，SQL是允许表中有重复和查询结果有重复的，我们可以使用`DISTINCT`来去重，与之相对的关键字是`ALL`，默认状态下就是`ALL`
+
+SQL查询是允许进行计算的，对应广义投影，比如
+
+```sql
+SELECT salary/1.2 FROM instructor
+```
+
+#### 重命名
+
+可以用`AS`来给重命名，既可以是属性名，也可以是表名。
+
+```sql
+SELECT A.title AS 标题, A.bno AS书号, B.cno AS 借书卡号
+FROM book AS A, borrow AS B 
+WHERE A.bno=B.bno
+```
+
+#### WHERER 子句
+
+``` sql
+SELECT column1, column2, ... FROM table_name WHERE condition;
+```
+
+condition 可以使用`AND` 、 `OR`和`NOT`以及`BETWEEN`连缀
+
+需要注意SQL里面的不等于是`<>`以及 **`WHERE`子句里面不允许有聚合函数** ，这是因为 `WHERE` 子句用于在聚合之前过滤行，而聚合函数是对一组行进行计算。
+
+#### ORDER BY 关键字
+
+用于对结果集按照一个列或者多个列进行排序
+
+``` sql
+SELECT column1, column2, ... FROM table_name 
+ORDER BY column1, column2, ... DESC; --默认是升序，但是经常需要的是降序
+```
+
+#### SELECT LIMIT 子句
+
+用于只需要查询前几行数据的情况，`mysql`是`LIMIT`但`sql server`是`TOP`
+
+``` sql
+--这个是mysql的语法
+SELECT column1, column2, ...
+FROM table_name 
+LIMIT number1
+OFFSET number2;
+```
+
+这个表示从第`number2`条记录开始截取`number1`条记录
+
+#### LIKE 操作符
+
+用于模糊化查询，类似于正则表达式
+
+```sql
+SELECT column1, column2, ... FROM table_name
+WHERE column_name LIKE pattern;
+```
+
+pattern中可以使用通配符：
+
+* `%`用于匹配任意字符串
+* `_`用于匹配单个字符
+* `[]`用于匹配字符列中的任何单一字符
+* `[^]`用于匹配不在字符列中的任何单一字符
+
+#### 字符串操作
+
+比如我想在查询结果前面加一串文字，在`mysql`里面是`CONCAT`
+
+```sql
+SELECT '教师名=' || name FROM instructors WHERE ...
+```
+
+以及转换大小写，求字符串长度等操作都有相应函数，但其实前面说了这种处理逻辑最好不在SQL里面实现，而是在后端代码里面实现，SQL主要就用于查询
+
+#### BETWEEN 操作符
+
+用于选取介于两个值之间的数据范围内的值
+
+``` sql
+SELECT column1, column2, ...
+FROM table_name WHERE column BETWEEN value1 AND value2;
+```
+
+#### 聚合查询
+
+对于统计总数、平均数这类计算，SQL提供了专门的聚合函数，包括以下这些
+
+|函数|说明|
+|-|-|
+|COUNT|计算行数|
+|AVG|计算平均值|
+|SUM|计算最大值|
+|MAX|计算某一列的最大值|
+|MIN|计算某一列的最小值|
+
+注意除了`COUNT(*)`，其它的聚合函数都会忽略`NULL`，特别是`COUNT(column)`也会忽略`NULL`
+
+SQL还提供了分组聚合的功能，可以用`GROUP BY`进行分组。需要注意在有聚合函数的情况下，不是聚合函数的属性必须在`GROUP BY`列表里面，换言之就是`SELECT` 子句中的列必须是聚合函数或 `GROUP BY` 子句中包含的列
+
+#### HAVING 子句
+
+对聚合函数结果进行选择，需要注意，`HAVING`子句里面的元素如果不是聚合函数里的属性，那么就必须在`GROUP BY`列表里面，结合上面可以得出其实`HAVING`里面的元素必须是`SELECT`后面出现过的
+
+### 集合操作
+
+同关系代数里面，有`UNION`,`INTERSECT`,`EXCEPT`对应并、交、差集三个操作，但是可以加`all`来表示允许重复，否则会自动去重，但是很多数据库其实并不全部支持
+
+### 关于 `null`
+
+`null`表示未定义，不等于0，含`null`的算数运算结果都是`null`，含`null`的逻辑比较结果都是`unknow`，对`unknow`的逻辑运算比较特别，既不能肯定它也不能否定它,`unknow`可以理解成未知是`true`还是`false`，也可以理解成既可以是`true`，也可以是`false`
+
+```py
+(unknow or false) = unknow
+(unknow and true) = unknow
+not unknow = unknow
+```
+
+此外需要注意`null`是不能用`=null`去判定的，因为关于`null`的逻辑运算结果都是`unknow`，`unknow`是不会被选中的，正确的写法应该是`is null`，同理对于`unknow`也有`is unknow`
+
+### 嵌套查询
+
+可以从查询结果里面提取信息，比如下面提取了24春所有课程的课程号，`in`表示`membership test`，对应的还有`not in`
+
+```sql
+SELECT DISTINCT course_id FROM section
+WHERE semester = 'Fall' and yaer = 2025
+ and course_id in (
+        SELECT course_id FROM section
+        WHERE semester = 'Spring'
+         and year = 2024
+    );
+```
+
+### some
+
+与集合中的某些值比较，相当于存在
+
+```sql
+5 < some(1,3,5,7) true 因为 5 < 7
+5 = some(1,3,5,7) true 因为 5 = 5
+5 > some(1,3,5,7) true 因为 5 > 1
+```
+
+#### 空集测试
+
+用于判断子查询是否存在，`EXIST r`等价于`r`非空
+
+#### 唯一性
+
+`unique`用于验证子查询结果中是否有重复的`tuple`
+
+### 视图
+
+用于对特定的用户隐藏特定的数据，主要是出于安全考虑，避免泄漏不需要的信息，视图是虚表，所有对视图的操作最终都会把转化成对真实的表的操作
+
+```sql
+CREATE VIEW 视图名 AS ... SELECT c1,c2,... FROM ...;
+--相当于把表作为视图，而且可以在这个过程中重命名
+--视图的使用和一般的表也是一样的
+DROP VIEW 视图名
+```
+
+### 复合查询
+
+#### 导出关系/子查询
+
+相当于从子查询结果中查询，这种情况下必须给子查询结果命名
+
+```sql
+SELECT dept_name, avg_salary
+FROM (
+    SELECT dept_name, avg(salary)
+    FROM instructors
+    GROUP BY dept_name
+) AS dept_avg(dept_name, avg_salary) --相当于一个视图
+WHERE avg_salry > 42000;
+```
+
+#### WITH 语句
+
+允许创建局部（针对一个查询语句而言）视图，学校给的服务器版本太低了，甚至不支持这个语法，建议lab都在本地做，上面那个查询语句可以改写为
+
+```sql
+WITH dept_avg(dept_name, avg_salary) AS
+ SELECT dept_name, avg(salary)
+    FROM instructors
+    GROUP BY dept_name
+SELECT dept_name, avg_salary
+FROM dept_avg
+WHERE avg_salry > 42000;
+```
+
+### 修改与删除
+
+#### INSERT INTO 语句
+
+用于向表中插入新记录，没有指定要插入数据的列名的形式需要列出插入行的每一列名称:
+
+``` sql
+INSERT INTO table_name
+VALUES (value1,value2,value3,...);
+--在高版本的 SQL Server里面允许一次性写多个VALUES
+```
+
+也可以指定列名和插入的值
+
+```sql
+INSERT INTO table_name (column1,column2,column3,...)
+VALUES (value1,value2,value3,...);
+```
+
+View是虚表，对View的操作最后都会转化成对实表的操作，查询是一样的，但是更新有严格限制
+
+#### UPDATE 语句
+
+用于更新指定值，更新的顺序也很重要
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+UPDATE允许用`CASE`来实现条件修改
+
+```sql
+UPDATE XXX
+ SET XXX
+  WHEN XXX
+  THEN XXX
+  ELSE XXX
+  END;
+```
+
+#### DELETE 语句
+
+用于删除表中的行，删除是讲究顺序的，不能提前把之后还要用的信息删除，也不能一次性对多个表进行删除
+
+```sql
+DELETE FROM table_name WHERE condition;
+```
+
+**在同一SQL语句内，除非外层查询的元组变量引入内层查询，否则内层查询只进行一次**，这说明删除并不会影响内层查询的结果
+
+### 事务
+
+事务可以看作一系列SQL操作，它们被打包成了一个整体，要么都完成，要么都不完成，如果全部完成则 commit，否则rollback。有些数据库是默认自动提交的，所以要首先关闭自动提交。
+
+### 连接
+
+这里有些概念要区分清楚，连接的类型有内连接、左连接、右连接、外连接，连接的条件有自然连接，`om`，`using`，on连接条件判别式，using直接写同名数据，其实什么都不写就有是自然连接，左右连接还有另一种写法`*=`和`=*`
