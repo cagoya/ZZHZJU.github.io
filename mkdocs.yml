@@ -36,7 +36,7 @@ theme:
     - navigation.top   # 返回顶部的按钮 在上滑时出现
     - search.suggest   # 搜索输入一些字母时推荐补全整个单词
     - search.highlight   # 搜索出的文章关键词加入高亮
-    - navigation.expand   # 打开Tab时左侧目录全部展开
+    # - navigation.expand   # 打开Tab时左侧目录全部展开
     #- navigation.indexes   #启用节索引页后，可以将文档直接附加到节
     - search.share   #搜索分享按钮
     - content.code.copy   #增添便捷的复制代码交互
