@@ -4,7 +4,7 @@
 
 LaTeX 是一种基于标记语言的排版系统，广泛用于科学、技术、工程和数学文档的撰写。你要写论文就离不开Latex，当然如果你愿意用word写你的毕业论文，那么请随意。下面这段文字摘自CS170
 
-You’re welcome to produce your homework PDF in various ways: $\LaTeX$, some other word processor, or neatly handwriting and scanning. We strongly advise using LaTeX. Here’s why:
+You’re welcome to produce your homework PDF in various ways: $\LaTeX $, some other word processor, or neatly handwriting and scanning. We strongly advise using LaTeX. Here’s why:
 
 * LaTeX documents are beautiful and a joy to read.
 * LaTeX is ubiquitous across mathematics and the sciences, so learning it is a sound investment.
@@ -66,7 +66,7 @@ You’re welcome to produce your homework PDF in various ways: $\LaTeX$, some ot
     ```
 
 ### 6. 数学公式
-* **行内公式**：`$公式$`
+* **行内公式**：`$公式 $`
 * **独立公式**：` \[ 公式 \] ` 或 ` \begin{equation} 公式 \end{equation} `
 
 ### 7. 矩阵
