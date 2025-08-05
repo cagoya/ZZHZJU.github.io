@@ -581,3 +581,75 @@ if (message is not null)
     Console.WriteLine(message);
 }
 ```
+
+## 简单 LINQ
+
+LINQ（Language Integrated Query）是 C# 中一个非常强大的特性，它允许你使用类似于 SQL 的语法来查询各种数据源，比如集合、数据库、XML 文档等。
+
+LINQ 主要通过两种语法来编写查询：
+
+1. 查询语法（Query Syntax）： 类似于 SQL 语句，更具声明性。
+2. 方法语法（Method Syntax / Fluent Syntax）： 使用扩展方法和Lambda 表达式，更具函数式编程的风格。
+
+推荐使用方法语法
+
+假设我们有一个 Student 类的列表：
+
+```cs
+public class Student
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string Major { get; set; }
+}
+
+List<Student> students = new List<Student>{...};
+```
+
+`Select`：筛选出年龄等于 20 的学生
+
+```cs
+var studentsAge20Method = students.Where(s => s.Age == 20);
+foreach (var student in studentsAge20Method)
+{
+    Console.WriteLine($"ID: {student.Id}, 姓名:{student.Name}, 年龄: {student.Age}");
+}
+```
+
+!!!note LINQ 是何时完成查询的？
+    LINQ 并不是在你写出表达式的时候就去执行了，它是惰性执行的，知道你去遍历 LINQ 查询结果真的获取数据时才会执行。
+
+`Project`：只选择学生的姓名和专业
+
+```cs
+var studentNamesAndMajorsMethod = students.Select(s => new { s.Name, s.Major });
+```
+
+这上面`new`出来的是匿名类型，允许在不显式定义类的情况下，创建一个包含一组只读属性的新对象。
+
+Sort：按年龄升序排列学生
+
+```cs
+var studentsSortedByAgeMethod = students.OrderBy(s => s.Age);
+```
+
+Group：按专业分组学生
+
+```cs
+var studentsGroupedByMajorMethod = students.GroupBy(s => s.Major);
+foreach (var group in studentsGroupedByMajorMethod)
+{
+    Console.WriteLine($"专业: {group.Key}");
+    foreach (var student in group)
+    {
+        Console.WriteLine($"  姓名: {student.Name}, 年龄: {student.Age}");
+    }
+}
+```
+
+Aggregate：计算所有学生的平均年龄
+
+```cs
+var averageAgeMethod = students.Select(s => s.Age).Average();
+```
