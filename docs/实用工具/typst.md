@@ -4,10 +4,10 @@
 
 Typst 是可用于出版的可编程标记语言，拥有变量、函数与包管理等现代编程语言的特性，注重于科学写作 (science writing)，定位与 $LaTeX $ 相似。它相比 $LaTeX $ 的优势在于：
 
-* 语法简洁
-* 编译速度快
-* 环境搭建简单
-* 现代编程语言
+* 语法简洁，大致介于 markdown 和 $LaTeX $ 之间
+* 编译速度快，支持增量编译
+* 支持类现代编程语言的语法
+* 环境搭建简单，在线和本地都可
 
 ## 语法
 
@@ -66,6 +66,6 @@ PPT 推荐 [touying](https://touying-typ.github.io/zh/docs/intro/)，尤其是[U
 
 ### 文档
 
-文档推荐[ori](https://typst.app/universe/package/ori/)
-
-![alt text](images/ori.png)
+* [ori](https://typst.app/universe/package/ori/)：糅合了多个Typst包的文档模版，适用于笔记（支持夜间模式）、报告和各类文档。
+* [EasyPaper](https://github.com/Dawnfz-Lenfeng/easy-paper)：一个基于 SimplePaper 改进的 Typst 模板，可用于日常报告/作业等。
+* [gentle-clues](https://typst.app/universe/package/gentle-clues/)：提供简洁易用的提示框。 内置多种样式，还可以轻松自定义。
