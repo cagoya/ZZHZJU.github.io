@@ -505,5 +505,80 @@ public void addNumbers(List<? super Integer> list) {
 
 ## 反射
 
-反射指的是在运行期间可以拿到一个对象的全部信息，然后可以动态地访问和修改对象的属性和方法。
+反射指的是在运行期间可以拿到一个对象的全部信息，然后可以动态地访问和修改对象的属性和方法。对于一个Java类，JVM在加载类时会创建一个`Class`对象（注意首字母是大写的），这个对象包含了类的全部信息，包括字段、方法、构造函数等。
+
+要使用反射，首先要获取类的 Class 对象，有三种主要方法：
+
+1. `Class.forName()`：最常用，通过类的全限定名（包名 + 类名）获取。
+
+```java
+Class<?> clazz = Class.forName("java.lang.String");
+```
+
+2. `Object.getClass()`：通过对象获取 Class 对象。
+
+```java
+Object obj = new String("hello");
+Class<?> clazz = obj.getClass();
+```
+
+3. `Class.class`：通过类字面量获取 Class 对象。
+
+```java
+Class<?> clazz = String.class;
+```
+
+下面是一个简单的例子，演示如何通过反射动态调用一个方法。
+
+```java
+public class Person {
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void sayHello(String greeting) {
+        System.out.println(greeting + ", my name is " + name);
+    }
+}
+```
+
+```java
+import java.lang.reflect.Method;
+
+public class ReflectionExample {
+    public static void main(String[] args) throws Exception {
+        // 1. 获取 Class 对象
+        Class<?> personClass = Class.forName("Person");
+
+        // 2. 获取构造方法并创建对象
+        // 这里假设 Person 类只有一个带 String 参数的构造方法
+        java.lang.reflect.Constructor<?> constructor = personClass.getConstructor(String.class);
+        Object person = constructor.newInstance("Tom");
+
+        // 3. 获取 sayHello 方法
+        Method sayHelloMethod = personClass.getMethod("sayHello", String.class);
+
+        // 4. 调用方法
+        sayHelloMethod.invoke(person, "Hello"); // 输出: Hello, my name is Tom
+    }
+}
+```
+
+## 注解
+
+Java 注解（Annotation）是一种特殊的元数据，可以为代码提供信息，但它本身不会对代码的执行产生直接影响。你可以把注解想象成贴在代码上的标签，这些标签可以被编译器、JVM 或其他工具读取和处理。
+
+Java 注解主要用于以下几个方面：
+
+* 编译时检查
+* 生成代码或配置文件
+* 运行时处理
+
+Java 内置了许多标准注解，同时你也可以自定义注解，以下是一些最常见的内置注解：
+
+* `@Override`：标记一个方法是重写父类的方法。如果父类中没有这个方法，编译器会报错。
+* `@Deprecated`：标记一个类、方法或字段已经过时，不建议再使用。当你在代码中使用它时，编译器会发出警告。
+* `@SuppressWarnings`：告诉编译器忽略特定的警告。
 
