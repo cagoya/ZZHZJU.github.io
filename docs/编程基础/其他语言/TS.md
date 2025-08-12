@@ -1,5 +1,0 @@
-# TypeScript
-
-## JS
-
-## TS
